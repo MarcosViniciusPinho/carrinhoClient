@@ -5,7 +5,6 @@ import { StepsModule } from 'primeng/steps';
 
 import { StepComponent } from './step.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
