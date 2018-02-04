@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { StepsModule } from 'primeng/steps';
-
 import { AppComponent } from './app.component';
+import { StepModule } from './step/step.module';
 
 
 @NgModule({
@@ -12,7 +11,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    StepsModule
+    StepModule
   ],
   providers: [],
   bootstrap: [AppComponent]
