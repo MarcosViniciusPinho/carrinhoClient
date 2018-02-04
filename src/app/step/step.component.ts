@@ -18,6 +18,7 @@ export class StepComponent implements OnInit {
 
     msgs: Message[] = [];
 
+
     // tslint:disable-next-line:no-inferrable-types
     activeIndex: number = 1;
 
