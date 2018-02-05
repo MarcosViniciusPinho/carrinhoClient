@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { StepModule } from './components/step/step.module';
-
+import { CardsModule } from './components/cards/cards.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { StepModule } from './components/step/step.module';
   ],
   imports: [
     BrowserModule,
-    StepModule
+    StepModule,
+    CardsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
