@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import {CardModule} from 'primeng/card';
 import {InputTextModule} from 'primeng/inputtext';
+import {ButtonModule} from 'primeng/button';
 
 import { CardsComponent } from './cards.component';
 
@@ -10,7 +11,8 @@ import { CardsComponent } from './cards.component';
   imports: [
     CommonModule,
     CardModule,
-    InputTextModule
+    InputTextModule,
+    ButtonModule
   ],
   declarations: [CardsComponent],
   exports: [CardsComponent]
