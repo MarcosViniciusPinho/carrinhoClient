@@ -1,18 +1,21 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {CardModule} from 'primeng/card';
+import {DataGridModule} from 'primeng/datagrid';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
+import {PanelModule} from 'primeng/panel';
 
 import { CardsComponent } from './cards.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    CardModule,
+
+    DataGridModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    PanelModule
   ],
   declarations: [CardsComponent],
   exports: [CardsComponent]

@@ -1,12 +1,25 @@
-<span class="ui-float-label">
-    <input id="float-input" type="text" size="157" pInputText>
+<div class="alinhar-grid-produtos">
+    Produtos Escolhidos: {{ produtosEscolhidos | json }}
+    <br />
+    Produtos disponiveis: {{ produtos | json }}
+  <span class="ui-float-label">
+    <input id="float-input" type="text" size="160" pInputText>
     <label for="float-input">Pesquisa</label>
     <button pButton type="button" label="Pesquisar"></button>
 </span>
-<div *ngFor="let produto of produtos">
-  <p-card [style]="{width: '360px'}" class="ui-g-3">
-    <div>{{produto.nome}}</div>
-    <div>{{produto.preco | currency}}</div>
-  </p-card>
-</div>
 
+<p-dataGrid [value]="produtos" [paginator]="true" [rows]="16" [totalRecords]="totalRecords">
+  <ng-template let-produto pTemplate="produto" let-row="index">
+        <div style="padding:3px" class="ui-g-12 ui-md-3">
+            <p-panel [header]="produto.nome" [style]="{'text-align':'center'}">
+                <!-- <img src="assets/showcase/images/demo/car/{{car.brand}}.png" width="60"> -->
+                <div class="car-detail">
+                    <div>{{produto.preco | currency}}</div>
+                </div>
+                <hr class="ui-widget-content" style="border-top:0">
+                <button pButton type="button" label="Adicionar ao carrinho" class="ui-button-secondary" (click)="selecionarProduto(produto, row)"></button>
+            </p-panel>
+        </div>
+    </ng-template>
+</p-dataGrid>
+</div>
