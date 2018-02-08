@@ -7,7 +7,8 @@ import { Message } from 'primeng/components/common/message';
   selector: 'app-step',
   template: `
     <h3>Etapas de compra</h3>
-    <p-steps [model]="items" styleClass="steps-custom"></p-steps>
+    <p-steps [model]="items" styleClass="steps-custom" [(activeIndex)]="activeIndex"></p-steps>
+    <button pButton type="button" (click)="avancarEtapa()" label="Next"></button>
   `,
   styleUrls: ['./step.component.css'],
   encapsulation: ViewEncapsulation.None
@@ -20,7 +21,7 @@ export class StepComponent implements OnInit {
 
 
     // tslint:disable-next-line:no-inferrable-types
-    activeIndex: number = 1;
+    activeIndex: number = 0;
 
     ngOnInit() {
         this.items = [{
@@ -28,7 +29,7 @@ export class StepComponent implements OnInit {
                 command: (event: any) => {
                     this.activeIndex = 0;
                     this.msgs.length = 0;
-                    this.msgs.push({severity: 'info', summary: 'First Step', detail: event.item.label});
+                    this.msgs.push({severity: 'info', summary: 'Primeira etapa', detail: event.item.label});
                 }
             },
             {
@@ -36,7 +37,7 @@ export class StepComponent implements OnInit {
                 command: (event: any) => {
                     this.activeIndex = 1;
                     this.msgs.length = 0;
-                    this.msgs.push({severity: 'info', summary: 'Seat Selection', detail: event.item.label});
+                    this.msgs.push({severity: 'info', summary: 'Segunda etapa', detail: event.item.label});
                 }
             },
             {
@@ -44,10 +45,18 @@ export class StepComponent implements OnInit {
                 command: (event: any) => {
                     this.activeIndex = 2;
                     this.msgs.length = 0;
-                    this.msgs.push({severity: 'info', summary: 'Pay with CC', detail: event.item.label});
+                    this.msgs.push({severity: 'info', summary: 'Terceira etapa', detail: event.item.label});
                 }
             }
         ];
+    }
+
+    avancarEtapa() {
+      if (this.activeIndex === 0) {
+        this.activeIndex = 1;
+      } else {
+        this.activeIndex = 2;
+      }
     }
 
 }
