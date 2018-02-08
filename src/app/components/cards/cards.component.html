@@ -9,15 +9,15 @@
 </span>
 
 <p-dataGrid [value]="produtos" [paginator]="true" [rows]="16" [totalRecords]="totalRecords">
-  <ng-template let-produto pTemplate="produto" let-row="index">
+  <ng-template let-produto pTemplate="produto">
         <div style="padding:3px" class="ui-g-12 ui-md-3">
             <p-panel [header]="produto.nome" [style]="{'text-align':'center'}">
                 <!-- <img src="assets/showcase/images/demo/car/{{car.brand}}.png" width="60"> -->
                 <div class="car-detail">
-                    <div>{{produto.preco | currency}}</div>
+                    <div>R{{ produto.preco | currency }}</div>
                 </div>
                 <hr class="ui-widget-content" style="border-top:0">
-                <button pButton type="button" label="Adicionar ao carrinho" class="ui-button-secondary" (click)="selecionarProduto(produto, row)"></button>
+                <button pButton type="button" label="Adicionar ao carrinho" class="ui-button-secondary" (click)="selecionarProduto(produto)"></button>
             </p-panel>
         </div>
     </ng-template>
