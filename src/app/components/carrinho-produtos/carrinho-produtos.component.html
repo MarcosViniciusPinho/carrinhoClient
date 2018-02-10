@@ -1,4 +1,4 @@
-<p-dataTable [value]="produtosEscolhidos" [style]="{'text-align':'center'}">
+<p-dataTable [value]="produtosEscolhidos" [style]="{'text-align':'center'}" emptyMessage="Carrinho está vazio">
   <p-column field="nome" header="Produto"></p-column>
   <p-column field="preco" header="Preço"></p-column>
   <p-column header="Quantidade">
@@ -12,5 +12,3 @@
     </ng-template>
   </p-column>
 </p-dataTable>
-
-
