@@ -1,0 +1,15 @@
+<p-dataTable [value]="produtosEscolhidos">
+  <p-column field="nome" header="Produto"></p-column>
+  <p-column field="preco" header="Preço"></p-column>
+  <p-column header="Quantidade">
+      <ng-template pTemplate="body" let-produto="rowData">
+          <p-spinner size="35" [(ngModel)]="produto.quantidade" [min]="1" [max]="100"></p-spinner>
+        </ng-template>
+  </p-column>
+  <p-column header="Ação">
+
+  </p-column>
+</p-dataTable>
+
+{{ produtosEscolhidos | json }}
+
