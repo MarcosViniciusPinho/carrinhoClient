@@ -1,6 +1,6 @@
 <div class="alinhar-grid-produtos">
   <span class="ui-float-label">
-    <input id="float-input" type="text" size="158" pInputText>
+    <input id="float-input" type="text" size="160" pInputText>
     <label for="float-input">Pesquisa</label>
     <button pButton type="button" label="Pesquisar"></button>
 </span>
@@ -10,11 +10,9 @@
         <div style="padding:3px" class="ui-g-12 ui-md-3">
             <p-panel [header]="produto.nome" [style]="{'text-align':'center'}">
                 <!-- <img src="assets/showcase/images/demo/car/{{car.brand}}.png" width="60"> -->
-                <div class="car-detail">
-                    <div>R{{ produto.preco | currency }}</div>
-                </div>
+                <div>R{{ produto.preco | currency }}</div>
                 <hr class="ui-widget-content" style="border-top:0">
-                <button pButton type="button" label="Adicionar ao carrinho" class="ui-button-secondary" (click)="selecionarProduto(produto)"></button>
+                <a href="#" (click)="selecionarProduto(produto)" title="Adicionar produto no carrinho"><i class="fa fa-cart-plus"></i></a>
             </p-panel>
         </div>
     </ng-template>

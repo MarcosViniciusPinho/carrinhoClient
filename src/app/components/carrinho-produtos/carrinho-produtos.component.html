@@ -1,4 +1,4 @@
-<p-dataTable [value]="produtosEscolhidos">
+<p-dataTable [value]="produtosEscolhidos" [style]="{'text-align':'center'}">
   <p-column field="nome" header="Produto"></p-column>
   <p-column field="preco" header="Preço"></p-column>
   <p-column header="Quantidade">
@@ -7,9 +7,10 @@
         </ng-template>
   </p-column>
   <p-column header="Ação">
-
+    <ng-template pTemplate="body" let-produto="rowData">
+      <a href="#" (click)="excluirProduto(produto)" title="Excluir produto do carrinho"><i class="fa fa-trash"></i></a>
+    </ng-template>
   </p-column>
 </p-dataTable>
 
-{{ produtosEscolhidos | json }}
 
