@@ -1,14 +1,17 @@
-<p-dataTable [value]="produtosEscolhidos" [style]="{'text-align':'center'}" emptyMessage="Carrinho está vazio">
-  <p-column field="nome" header="Produto"></p-column>
-  <p-column field="preco" header="Preço"></p-column>
-  <p-column header="Quantidade">
-      <ng-template pTemplate="body" let-produto="rowData">
-          <p-spinner size="35" [(ngModel)]="produto.quantidade" [min]="1" [max]="100"></p-spinner>
-        </ng-template>
-  </p-column>
-  <p-column header="Ação">
-    <ng-template pTemplate="body" let-produto="rowData">
-      <a href="#" (click)="excluirProduto(produto)" title="Excluir produto do carrinho"><i class="fa fa-trash"></i></a>
-    </ng-template>
-  </p-column>
-</p-dataTable>
+<div class="align-component-in-steps">
+    <p-dataTable [value]="produtosEscolhidos" [style]="{'text-align':'center'}" emptyMessage="Carrinho está vazio">
+        <p-column field="nome" header="Produto"></p-column>
+        <p-column field="preco" header="Preço"></p-column>
+        <p-column header="Quantidade">
+            <ng-template pTemplate="body" let-produto="rowData">
+                <p-spinner size="35" [(ngModel)]="produto.quantidade" [min]="1" [max]="100"></p-spinner>
+              </ng-template>
+        </p-column>
+        <p-column header="Ação">
+          <ng-template pTemplate="body" let-produto="rowData">
+            <a href="#" (click)="excluirProduto(produto)" title="Excluir produto do carrinho"><i class="fa fa-trash"></i></a>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+</div>
+
