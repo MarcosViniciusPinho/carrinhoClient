@@ -8,7 +8,8 @@
         </p-column>
         <p-column header="Quantidade">
             <ng-template pTemplate="body" let-produto="rowData">
-                <p-spinner size="35" [(ngModel)]="produto.quantidade" [min]="1" [max]="100" (click)="calcularTotalAposQuantidadeDeUmProdutoSerAlterada()"></p-spinner>
+                <p-spinner size="35" [(ngModel)]="produto.quantidade" [min]="1" [max]="100" (click)="calcularTotalAposQuantidadeDeUmProdutoSerAlterada()"
+                          [readonly]="true"></p-spinner>
               </ng-template>
         </p-column>
         <p-column header="Ação">
