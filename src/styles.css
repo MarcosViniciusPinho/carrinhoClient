@@ -2,3 +2,8 @@
 .align-component-in-steps{
   margin-top: 50px;
 }
+
+.ui-datatable .ui-datatable-thead>tr>th, .ui-datatable .ui-datatable-tfoot>tr>td{
+  color: #eaf5f7;
+  font-weight: bold;
+}
