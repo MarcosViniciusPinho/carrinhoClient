@@ -8,7 +8,7 @@
         </p-column>
         <p-column header="Quantidade">
             <ng-template pTemplate="body" let-produto="rowData">
-                <p-spinner size="35" [(ngModel)]="produto.quantidade" [min]="1" [max]="100"></p-spinner>
+                <p-spinner size="35" [(ngModel)]="produto.quantidade" [min]="1" [max]="100" (click)="calcularTotalAposQuantidadeDeUmProdutoSerAlterada()"></p-spinner>
               </ng-template>
         </p-column>
         <p-column header="Ação">
@@ -16,6 +16,7 @@
             <a href="#" (click)="excluirProduto(produto)" title="Excluir produto do carrinho"><i class="fa fa-trash"></i></a>
           </ng-template>
         </p-column>
+        <p-footer>Total: R{{ totalAPagar | currency }}</p-footer>
       </p-dataTable>
 </div>
 
