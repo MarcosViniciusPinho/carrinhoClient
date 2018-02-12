@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ToastyService } from 'ng2-toasty';
+
 @Component({
   selector: 'app-carrinho-produtos',
   templateUrl: './carrinho-produtos.component.html'
@@ -10,6 +12,8 @@ export class CarrinhoProdutosComponent implements OnInit {
 
   // tslint:disable-next-line:no-inferrable-types
   totalAPagar: number = 0;
+
+  constructor(private toastyService: ToastyService) {}
 
   ngOnInit() {
 
@@ -40,6 +44,7 @@ export class CarrinhoProdutosComponent implements OnInit {
   excluirProduto(produto) {
     this.produtosEscolhidos = this.produtosEscolhidos.filter(obj => obj !== produto);
     this.calcularTotalAposExclusaoDeUmProduto(produto);
+    this.toastyService.success(`O produto ${produto.nome} foi excluído do carrinho`.toUpperCase());
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ToastyService } from 'ng2-toasty';
+
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
@@ -9,6 +11,8 @@ export class CardsComponent implements OnInit {
 
   produtos = [];
   produtosEscolhidos = [];
+
+  constructor(private toastyService: ToastyService) {}
 
   ngOnInit() {
     this.produtos = [{nome: 'Sabão', preco: Math.floor((Math.random() * 70.5)), id: 1},
@@ -33,6 +37,7 @@ export class CardsComponent implements OnInit {
   selecionarProduto(produto) {
     this.produtos = this.produtos.filter(obj => obj !== produto);
     this.produtosEscolhidos.push(produto);
+    this.toastyService.success(`Você adicionou o produto ${produto.nome} no carrinho`.toUpperCase());
   }
 
 }
