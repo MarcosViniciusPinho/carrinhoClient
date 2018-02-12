@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { MenuItem } from 'primeng/components/common/menuitem';
 import { Message } from 'primeng/components/common/message';
@@ -21,9 +22,10 @@ export class StepComponent implements OnInit {
 
     msgs: Message[] = [];
 
-
     // tslint:disable-next-line:no-inferrable-types
     activeIndex: number = 0;
+
+    constructor(private router: Router) {}
 
     ngOnInit() {
         this.items = [{
@@ -56,6 +58,7 @@ export class StepComponent implements OnInit {
     avancarEtapa() {
       if (this.activeIndex === 0) {
         this.activeIndex = 1;
+        this.router.navigate(['/secound']);
       } else {
         this.activeIndex = 2;
       }
