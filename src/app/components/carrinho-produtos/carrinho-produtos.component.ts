@@ -44,7 +44,7 @@ export class CarrinhoProdutosComponent implements OnInit {
   excluirProduto(produto) {
     this.produtosEscolhidos = this.produtosEscolhidos.filter(obj => obj !== produto);
     this.calcularTotalAposExclusaoDeUmProduto(produto);
-    this.toastyService.success(`O produto ${produto.nome} foi excluído do carrinho`.toUpperCase());
+    this.toastyService.success(`Produto foi removido do carrinho`.toUpperCase());
   }
 
 }

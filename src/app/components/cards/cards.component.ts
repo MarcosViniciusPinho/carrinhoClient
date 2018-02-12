@@ -37,7 +37,7 @@ export class CardsComponent implements OnInit {
   selecionarProduto(produto) {
     this.produtos = this.produtos.filter(obj => obj !== produto);
     this.produtosEscolhidos.push(produto);
-    this.toastyService.success(`Você adicionou o produto ${produto.nome} no carrinho`.toUpperCase());
+    this.toastyService.success(`Produto adicionado no carrinho`.toUpperCase());
   }
 
 }
