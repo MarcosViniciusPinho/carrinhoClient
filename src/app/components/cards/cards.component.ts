@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ToastyService } from 'ng2-toasty';
 import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
+import { Produto } from '../../domain/produto';
 
 @Component({
   selector: 'app-cards',
@@ -10,31 +11,31 @@ import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
 })
 export class CardsComponent implements OnInit {
 
-  produtos = [];
+  produtos: Produto[] = [];
 
   constructor(private toastyService: ToastyService) {}
 
   ngOnInit() {
-    this.produtos = [{nome: 'Sabão', preco: Math.floor((Math.random() * 70.5)), id: 1, quantidade: 1},
-                    {nome: 'Geladeira', preco: Math.floor((Math.random() * 70.5)), id: 5, quantidade: 1},
-                    {nome: 'Televisão', preco: Math.floor((Math.random() * 70.5)), id: 10, quantidade: 1},
-                    {nome: 'PS4', preco: Math.floor((Math.random() * 70.5)), id: 12, quantidade: 1},
-                    {nome: 'Ar Condicionado', preco: Math.floor((Math.random() * 70.5)), id: 15, quantidade: 1},
-                    {nome: 'Celular Smartphone', preco: Math.floor((Math.random() * 70.5)), id: 16, quantidade: 1},
-                    {nome: 'Computador Ultima Geração', preco: Math.floor((Math.random() * 70.5)), id: 20, quantidade: 1},
-                    {nome: 'Maquina de fotografia', preco: Math.floor((Math.random() * 70.5)), id: 22, quantidade: 1},
-                    {nome: 'Livros', preco: Math.floor((Math.random() * 70.5)), id: 24, quantidade: 1},
-                    {nome: 'Maquina de lavar', preco: Math.floor((Math.random() * 70.5)), id: 25, quantidade: 1},
-                    {nome: 'Impressora', preco: Math.floor((Math.random() * 70.5)), id: 31, quantidade: 1},
-                    {nome: 'Mouse', preco: Math.floor((Math.random() * 70.5)), id: 33, quantidade: 1},
-                    {nome: 'Mesa para PC', preco: Math.floor((Math.random() * 70.5)), id: 36, quantidade: 1},
-                    {nome: 'Cadeira para PC', preco: Math.floor((Math.random() * 70.5)), id: 40, quantidade: 1},
-                    {nome: 'Mini ventilador', preco: Math.floor((Math.random() * 70.5)), id: 42, quantidade: 1},
-                    {nome: 'Ventilador', preco: Math.floor((Math.random() * 70.5)), id: 45, quantidade: 1},
-                    {nome: 'Mouse Pad', preco: Math.floor((Math.random() * 70.5)), id: 47, quantidade: 1}];
+    this.produtos = [new Produto(1, 'Sabão', Math.floor((Math.random() * 70.5))),
+                    new Produto(5, 'Geladeira', Math.floor((Math.random() * 70.5))),
+                    new Produto(10, 'Televisão', Math.floor((Math.random() * 70.5))),
+                    new Produto(12, 'PS4', Math.floor((Math.random() * 70.5))),
+                    new Produto(15, 'Ar Condicionado', Math.floor((Math.random() * 70.5))),
+                    new Produto(16, 'Celular Smartphone', Math.floor((Math.random() * 70.5))),
+                    new Produto(20, 'Computador Ultima Geração', Math.floor((Math.random() * 70.5))),
+                    new Produto(22, 'Maquina de fotografia', Math.floor((Math.random() * 70.5))),
+                    new Produto(24, 'Livros', Math.floor((Math.random() * 70.5))),
+                    new Produto(25, 'Maquina de lavar', Math.floor((Math.random() * 70.5))),
+                    new Produto(31, 'Impressora', Math.floor((Math.random() * 70.5))),
+                    new Produto(33, 'Mouse', Math.floor((Math.random() * 70.5))),
+                    new Produto(36, 'Mesa para PC', Math.floor((Math.random() * 70.5))),
+                    new Produto(40, 'Cadeira para PC', Math.floor((Math.random() * 70.5))),
+                    new Produto(42, 'Mini ventilador', Math.floor((Math.random() * 70.5))),
+                    new Produto(45, 'Ventilador', Math.floor((Math.random() * 70.5))),
+                    new Produto(47, 'Mouse Pad', Math.floor((Math.random() * 70.5)))];
   }
 
-  selecionarProduto(produto) {
+  selecionarProduto(produto: Produto) {
     this.produtos = this.produtos.filter(obj => obj !== produto);
     ProdutoEscolhidoArray.add(produto);
     this.toastyService.success(`Produto adicionado no carrinho`.toUpperCase());

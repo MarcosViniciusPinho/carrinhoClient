@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastyService } from 'ng2-toasty';
 
 import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
+import { Produto } from '../../domain/produto';
 
 @Component({
   selector: 'app-carrinho-produtos',
@@ -10,7 +11,7 @@ import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
 })
 export class CarrinhoProdutosComponent implements OnInit {
 
-  produtosEscolhidos = [];
+  produtosEscolhidos: Produto[] = [];
 
   // tslint:disable-next-line:no-inferrable-types
   totalAPagar: number = 0;
@@ -33,11 +34,11 @@ export class CarrinhoProdutosComponent implements OnInit {
     this.calcularTotalAoIniciar();
   }
 
-  calcularTotalAposExclusaoDeUmProduto(produto) {
+  calcularTotalAposExclusaoDeUmProduto(produto: Produto) {
     this.totalAPagar -= produto.preco * produto.quantidade;
   }
 
-  excluirProduto(produto) {
+  excluirProduto(produto: Produto) {
     this.produtosEscolhidos = this.produtosEscolhidos.filter(obj => obj !== produto);
     this.calcularTotalAposExclusaoDeUmProduto(produto);
     this.toastyService.success(`Produto foi removido do carrinho`.toUpperCase());
