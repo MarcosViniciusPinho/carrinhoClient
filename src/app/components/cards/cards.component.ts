@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastyService } from 'ng2-toasty';
 import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
 import { Produto } from '../../domain/produto';
+import { ProdutoService } from '../../services/produto.service';
 
 @Component({
   selector: 'app-cards',
@@ -13,10 +14,13 @@ export class CardsComponent implements OnInit {
 
   produtos: Produto[] = [];
 
-  constructor(private toastyService: ToastyService) {}
+  constructor(private toastyService: ToastyService,
+              private produtoService: ProdutoService) {}
 
   ngOnInit() {
-    this.produtos = [new Produto(1, 'Sabão', Math.floor((Math.random() * 70.5))),
+    this.produtoService.list().then(produtosCarregados => this.produtos = produtosCarregados);
+
+    /* this.produtos = [new Produto(1, 'Sabão', Math.floor((Math.random() * 70.5))),
                     new Produto(5, 'Geladeira', Math.floor((Math.random() * 70.5))),
                     new Produto(10, 'Televisão', Math.floor((Math.random() * 70.5))),
                     new Produto(12, 'PS4', Math.floor((Math.random() * 70.5))),
@@ -32,7 +36,7 @@ export class CardsComponent implements OnInit {
                     new Produto(40, 'Cadeira para PC', Math.floor((Math.random() * 70.5))),
                     new Produto(42, 'Mini ventilador', Math.floor((Math.random() * 70.5))),
                     new Produto(45, 'Ventilador', Math.floor((Math.random() * 70.5))),
-                    new Produto(47, 'Mouse Pad', Math.floor((Math.random() * 70.5)))];
+                    new Produto(47, 'Mouse Pad', Math.floor((Math.random() * 70.5)))]; */
   }
 
   selecionarProduto(produto: Produto) {

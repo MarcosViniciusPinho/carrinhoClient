@@ -7,6 +7,7 @@ import {ButtonModule} from 'primeng/button';
 import {PanelModule} from 'primeng/panel';
 
 import { CardsComponent } from './cards.component';
+import { ProdutoService } from '../../services/produto.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { CardsComponent } from './cards.component';
     ButtonModule,
     PanelModule
   ],
+  providers: [ProdutoService],
   declarations: [CardsComponent],
   exports: [CardsComponent]
 })

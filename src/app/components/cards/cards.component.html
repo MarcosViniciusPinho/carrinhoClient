@@ -11,7 +11,18 @@
         <div style="padding:3px" class="ui-g-12 ui-md-3">
             <p-panel [header]="produto.nome">
                 <!-- <img src="assets/showcase/images/demo/car/{{car.brand}}.png" width="60"> -->
-                <div>R{{ produto.preco | currency }}</div>
+                <div>
+                  <span>Descrição: </span>
+                  <span>{{ produto.descricao }}</span>
+                </div>
+                <div>
+                    <span>Categoria: </span>
+                    <span>{{ produto.nomeCategoria }}</span>
+                </div>
+                <div>
+                  <span>Por apenas: </span>
+                  <span>R{{ produto.valor | currency }}</span>
+                </div>
                 <hr class="ui-widget-content" style="border-top:0">
                 <a href="#" (click)="selecionarProduto(produto)" title="Adicionar produto no carrinho"><i class="fa fa-cart-plus"></i></a>
             </p-panel>

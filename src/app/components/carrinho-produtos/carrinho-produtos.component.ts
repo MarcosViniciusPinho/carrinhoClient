@@ -25,7 +25,7 @@ export class CarrinhoProdutosComponent implements OnInit {
 
   calcularTotalAoIniciar() {
     for (const produto of this.produtosEscolhidos) {
-        this.totalAPagar += produto.preco * produto.quantidade;
+        this.totalAPagar += produto.valor * produto.quantidade;
     }
   }
 
@@ -35,7 +35,7 @@ export class CarrinhoProdutosComponent implements OnInit {
   }
 
   calcularTotalAposExclusaoDeUmProduto(produto: Produto) {
-    this.totalAPagar -= produto.preco * produto.quantidade;
+    this.totalAPagar -= produto.valor * produto.quantidade;
   }
 
   excluirProduto(produto: Produto) {

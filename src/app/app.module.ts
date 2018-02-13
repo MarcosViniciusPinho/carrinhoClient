@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 import { ToastyModule } from 'ng2-toasty';
 
@@ -26,6 +27,7 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
+    HttpModule,
 
     ToastyModule.forRoot(),
 

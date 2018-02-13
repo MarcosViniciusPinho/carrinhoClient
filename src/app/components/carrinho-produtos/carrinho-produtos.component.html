@@ -3,7 +3,7 @@
         <p-column field="nome" header="Produto"></p-column>
         <p-column header="Preço">
             <ng-template pTemplate="body" let-produto="rowData">
-                R{{ produto.preco | currency }}
+                R{{ produto.valor | currency }}
             </ng-template>
         </p-column>
         <p-column header="Quantidade">
