@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ToastyService } from 'ng2-toasty';
 
+import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
+
 @Component({
   selector: 'app-carrinho-produtos',
   templateUrl: './carrinho-produtos.component.html'
@@ -16,14 +18,8 @@ export class CarrinhoProdutosComponent implements OnInit {
   constructor(private toastyService: ToastyService) {}
 
   ngOnInit() {
-
-    this.produtosEscolhidos = [{nome: 'Sabão', preco: 50, id: 1, quantidade: 1},
-                              {nome: 'Geladeira', preco: 50, id: 5, quantidade: 1},
-                              {nome: 'Televisão', preco: 50, id: 10, quantidade: 1},
-                              {nome: 'PS4', preco: 50, id: 12, quantidade: 1},
-                              {nome: 'Ar Condicionado', preco: 50, id: 15, quantidade: 1}];
+    this.produtosEscolhidos = ProdutoEscolhidoArray.list();
     this.calcularTotalAoIniciar();
-
   }
 
   calcularTotalAoIniciar() {
