@@ -4,6 +4,7 @@ import { ToastyService } from 'ng2-toasty';
 import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
 import { Produto } from '../../domain/produto';
 import { ProdutoService } from '../../services/produto.service';
+import { Categoria } from '../../domain/categoria';
 
 @Component({
   selector: 'app-cards',
@@ -18,25 +19,16 @@ export class CardsComponent implements OnInit {
               private produtoService: ProdutoService) {}
 
   ngOnInit() {
-    this.produtoService.list().then(produtosCarregados => this.produtos = produtosCarregados);
+    this.produtoService.list().then(produtosCarregados =>
+      this.produtos = this.inserirValorParaAtributoQuantidadeDeProduto(produtosCarregados));
+  }
 
-    /* this.produtos = [new Produto(1, 'Sabão', Math.floor((Math.random() * 70.5))),
-                    new Produto(5, 'Geladeira', Math.floor((Math.random() * 70.5))),
-                    new Produto(10, 'Televisão', Math.floor((Math.random() * 70.5))),
-                    new Produto(12, 'PS4', Math.floor((Math.random() * 70.5))),
-                    new Produto(15, 'Ar Condicionado', Math.floor((Math.random() * 70.5))),
-                    new Produto(16, 'Celular Smartphone', Math.floor((Math.random() * 70.5))),
-                    new Produto(20, 'Computador Ultima Geração', Math.floor((Math.random() * 70.5))),
-                    new Produto(22, 'Maquina de fotografia', Math.floor((Math.random() * 70.5))),
-                    new Produto(24, 'Livros', Math.floor((Math.random() * 70.5))),
-                    new Produto(25, 'Maquina de lavar', Math.floor((Math.random() * 70.5))),
-                    new Produto(31, 'Impressora', Math.floor((Math.random() * 70.5))),
-                    new Produto(33, 'Mouse', Math.floor((Math.random() * 70.5))),
-                    new Produto(36, 'Mesa para PC', Math.floor((Math.random() * 70.5))),
-                    new Produto(40, 'Cadeira para PC', Math.floor((Math.random() * 70.5))),
-                    new Produto(42, 'Mini ventilador', Math.floor((Math.random() * 70.5))),
-                    new Produto(45, 'Ventilador', Math.floor((Math.random() * 70.5))),
-                    new Produto(47, 'Mouse Pad', Math.floor((Math.random() * 70.5)))]; */
+  inserirValorParaAtributoQuantidadeDeProduto(produtosBuscados) {
+    const produtos: Produto[] = [];
+    for (const p of produtosBuscados) {
+      produtos.push(new Produto(p.id, p.nome, p.descricao, p.valor, p.categoria));
+    }
+    return produtos;
   }
 
   selecionarProduto(produto: Produto) {
