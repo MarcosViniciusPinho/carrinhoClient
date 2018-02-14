@@ -4,13 +4,15 @@ import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/components/common/menuitem';
 import { Message } from 'primeng/components/common/message';
 
+import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
+
 @Component({
   selector: 'app-step',
   template: `
     <h3>Etapas de compra</h3>
     <p-steps [model]="items" styleClass="steps-custom" [(activeIndex)]="activeIndex"></p-steps>
     <div class="alinhar-botao-next">
-      <button pButton type="button" (click)="avancarEtapa()" label="Next"></button>
+      <button pButton type="button" (click)="avancarEtapa()" label="Next" [disabled]="habilitarBotaoNext()"></button>
     </div>
   `,
   styleUrls: ['./step.component.css'],
@@ -53,6 +55,10 @@ export class StepComponent implements OnInit {
                 }
             }
         ];
+    }
+
+    habilitarBotaoNext(): boolean {
+      return ProdutoEscolhidoArray.list().length === 0;
     }
 
     avancarEtapa() {
