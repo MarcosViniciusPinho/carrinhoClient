@@ -1,7 +1,7 @@
 <div class="align-component-in-steps">
   <span class="ui-float-label">
     <input id="float-input" type="text" size="159" pInputText #campoPesquisado>
-    <label for="float-input">Pesquisa</label>
+    <label for="float-input">Pesquise por um nome de um produto</label>
     <button pButton type="button" label="Pesquisar" (click)="pesquisar(campoPesquisado.value)"></button>
 </span>
 
@@ -12,15 +12,15 @@
             <p-panel [header]="produto.nome">
                 <!-- <img src="assets/showcase/images/demo/car/{{car.brand}}.png" width="60"> -->
                 <div>
-                  <span>Descrição: </span>
+                  <strong>Descrição: </strong>
                   <span>{{ produto.descricao }}</span>
-                </div>
+                </div><br />
                 <div>
-                    <span>Categoria: </span>
+                    <strong>Categoria: </strong>
                     <span>{{ produto.categoria.nome }}</span>
-                </div>
+                </div><br />
                 <div>
-                  <span>Por apenas: </span>
+                  <strong>Por apenas: </strong>
                   <span>R{{ produto.valor | currency }}</span>
                 </div>
                 <hr class="ui-widget-content" style="border-top:0">

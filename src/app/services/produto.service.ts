@@ -14,8 +14,8 @@ export class ProdutoService {
       then(response => response.json());
   }
 
-  pesquisarComParametros(campoPesquisa): Promise<Produto[]>  {
-    return this.http.get(`${this.produtoUrl}?nome=${campoPesquisa}&descricao=${campoPesquisa}`).toPromise().
+  findByNome(campoPesquisa): Promise<Produto[]>  {
+    return this.http.get(`${this.produtoUrl}?nome=${campoPesquisa}`).toPromise().
     then(response => response.json());
   }
 }
