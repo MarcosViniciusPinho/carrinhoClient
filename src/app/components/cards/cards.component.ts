@@ -23,6 +23,11 @@ export class CardsComponent implements OnInit {
       this.produtos = this.inserirValorParaAtributoQuantidadeDeProduto(produtosCarregados));
   }
 
+  pesquisar(campoPesquisado) {
+    this.produtoService.pesquisarComParametros(campoPesquisado).then(produtosCarregados =>
+      this.produtos = this.inserirValorParaAtributoQuantidadeDeProduto(produtosCarregados));
+  }
+
   inserirValorParaAtributoQuantidadeDeProduto(produtosBuscados) {
     const produtos: Produto[] = [];
     for (const p of produtosBuscados) {

@@ -1,8 +1,8 @@
 <div class="align-component-in-steps">
   <span class="ui-float-label">
-    <input id="float-input" type="text" size="159" pInputText>
+    <input id="float-input" type="text" size="159" pInputText #campoPesquisado>
     <label for="float-input">Pesquisa</label>
-    <button pButton type="button" label="Pesquisar"></button>
+    <button pButton type="button" label="Pesquisar" (click)="pesquisar(campoPesquisado.value)"></button>
 </span>
 
 <p-dataGrid [value]="produtos" [paginator]="true" [rows]="16" [totalRecords]="totalRecords" emptyMessage="Produto(s) indisponível no momento"
