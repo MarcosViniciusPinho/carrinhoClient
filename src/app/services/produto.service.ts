@@ -9,13 +9,9 @@ export class ProdutoService {
 
   constructor(private http: Http) { }
 
-  list(): Promise<Produto[]> {
-    return this.http.get(`${this.produtoUrl}`).toPromise().
+  list(campoPesquisa = ''): Promise<Produto[]> {
+    return this.http.get(`${this.produtoUrl}?nome=${campoPesquisa}`).toPromise().
       then(response => response.json());
   }
 
-  findByNome(campoPesquisa): Promise<Produto[]>  {
-    return this.http.get(`${this.produtoUrl}?nome=${campoPesquisa}`).toPromise().
-    then(response => response.json());
-  }
 }

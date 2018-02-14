@@ -24,7 +24,7 @@ export class CardsComponent implements OnInit {
   }
 
   pesquisar(campoPesquisado) {
-    this.produtoService.findByNome(campoPesquisado).then(produtosCarregados => {
+    this.produtoService.list(campoPesquisado).then(produtosCarregados => {
         const produtos = this.inserirValorParaAtributoQuantidadeDeProduto(produtosCarregados);
         this.produtos = this.removerProdutoEscolhidoAoPesquisar(produtos);
     });
