@@ -21,7 +21,7 @@
                 </div><br />
                 <div>
                   <strong>Por apenas: </strong>
-                  <span>R{{ produto.valor | currency }}</span>
+                  <span>{{ produto.valor | currency: 'BRL' }}</span>
                 </div>
                 <hr class="ui-widget-content" style="border-top:0">
                 <a href="#" (click)="selecionarProduto(produto)" title="Adicionar produto no carrinho"><i class="fa fa-cart-plus"></i></a>

@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
-import { APP_BASE_HREF } from '@angular/common';
+import { APP_BASE_HREF, registerLocaleData } from '@angular/common';
 import { HttpModule } from '@angular/http';
+import localePt from '@angular/common/locales/pt';
 
 import { ToastyModule } from 'ng2-toasty';
 
@@ -14,7 +15,10 @@ import { CarrinhoProdutosModule } from './components/carrinho-produtos/carrinho-
 import { CardsComponent } from './components/cards/cards.component';
 import { CarrinhoProdutosComponent } from './components/carrinho-produtos/carrinho-produtos.component';
 
+registerLocaleData(localePt);
+
 const routes: Routes = [
+  { path: '', redirectTo: '/first', pathMatch: 'full' },
   { path: 'first', component: CardsComponent },
   { path: 'secound', component: CarrinhoProdutosComponent }
 ];
@@ -35,7 +39,7 @@ const routes: Routes = [
     CardsModule,
     CarrinhoProdutosModule
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'}, { provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
