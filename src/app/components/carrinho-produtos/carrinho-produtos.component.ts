@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ToastyService } from 'ng2-toasty';
 
@@ -16,11 +17,19 @@ export class CarrinhoProdutosComponent implements OnInit {
   // tslint:disable-next-line:no-inferrable-types
   totalAPagar: number = 0;
 
-  constructor(private toastyService: ToastyService) {}
+  constructor(private toastyService: ToastyService,
+              private router: Router) {}
 
   ngOnInit() {
     this.produtosEscolhidos = ProdutoEscolhidoArray.list();
     this.calcularTotalAoIniciar();
+    this.redirecionarParaFirst();
+  }
+
+  redirecionarParaFirst() {
+    if (ProdutoEscolhidoArray.list().length === 0) {
+      this.router.navigate(['/first']);
+    }
   }
 
   calcularTotalAoIniciar() {
