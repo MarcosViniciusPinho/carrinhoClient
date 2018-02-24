@@ -14,6 +14,7 @@ import { CardsModule } from './components/cards/cards.module';
 import { CarrinhoProdutosModule } from './components/carrinho-produtos/carrinho-produtos.module';
 import { CardsComponent } from './components/cards/cards.component';
 import { CarrinhoProdutosComponent } from './components/carrinho-produtos/carrinho-produtos.component';
+import { NavbarModule } from './navbar/navbar.module';
 
 registerLocaleData(localePt);
 
@@ -37,7 +38,8 @@ const routes: Routes = [
 
     StepModule,
     CardsModule,
-    CarrinhoProdutosModule
+    CarrinhoProdutosModule,
+    NavbarModule
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'}, { provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]

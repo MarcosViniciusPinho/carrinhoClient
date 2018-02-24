@@ -9,10 +9,11 @@ import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
 @Component({
   selector: 'app-step',
   template: `
-    <h3>Etapas de compra</h3>
-    <p-steps [model]="items" styleClass="steps-custom" [(activeIndex)]="activeIndex"></p-steps>
-    <div class="alinhar-botao-next">
-      <button pButton type="button" (click)="avancarEtapa()" label="Next" [disabled]="habilitarBotaoNext()"></button>
+    <div class="alinhar-steps-com-navbar">
+      <p-steps [model]="items" styleClass="steps-custom" [(activeIndex)]="activeIndex"></p-steps>
+      <div class="alinhar-botao-next">
+        <button pButton type="button" (click)="avancarEtapa()" label="Next" [disabled]="habilitarBotaoNext()"></button>
+      </div>
     </div>
   `,
   styleUrls: ['./step.component.css'],
@@ -34,24 +35,18 @@ export class StepComponent implements OnInit {
                 label: 'Produtos disponíveis',
                 command: (event: any) => {
                     this.activeIndex = 0;
-                    this.msgs.length = 0;
-                    this.msgs.push({severity: 'info', summary: 'Primeira etapa', detail: event.item.label});
                 }
             },
             {
                 label: 'Carrinho',
                 command: (event: any) => {
                     this.activeIndex = 1;
-                    this.msgs.length = 0;
-                    this.msgs.push({severity: 'info', summary: 'Segunda etapa', detail: event.item.label});
                 }
             },
             {
                 label: 'Confirmar compra',
                 command: (event: any) => {
                     this.activeIndex = 2;
-                    this.msgs.length = 0;
-                    this.msgs.push({severity: 'info', summary: 'Terceira etapa', detail: event.item.label});
                 }
             }
         ];
