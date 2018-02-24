@@ -17,4 +17,8 @@ export class ProdutoEscolhidoArray {
     return this.produtosEscolhidos;
   }
 
+  static contains(produto: Produto) {
+    return this.produtosEscolhidos.some(produtoEscolhido => produtoEscolhido.id === produto.id);
+  }
+
 }
