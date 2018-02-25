@@ -5,12 +5,14 @@
     <button pButton type="button" label="Pesquisar" (click)="pesquisar(campoPesquisado.value)"></button>
 </span>
 
-<p-dataGrid [value]="produtos" [paginator]="true" [rows]="16" [totalRecords]="totalRecords" emptyMessage="Produto(s) indisponível no momento"
+<p-dataGrid [value]="produtos" [paginator]="true" [rows]="12" [totalRecords]="totalRecords" emptyMessage="Produto(s) indisponível no momento"
     [style]="{'text-align':'center'}">
   <ng-template let-produto pTemplate="produto">
         <div style="padding:3px" class="ui-g-12 ui-md-3">
             <p-panel [header]="produto.nome">
-                <img [src]="produto.pathImagem" height="200">
+                <div>
+                  <img [src]="produto.pathImagem" height="80">
+                </div><br />
                 <div>
                   <strong>Descrição: </strong>
                   <span>{{ produto.descricao }} {{ produto.capacidade }}</span>
