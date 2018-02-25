@@ -33,7 +33,7 @@ export class CardsComponent implements OnInit {
   inserirValorParaAtributoQuantidadeDeProduto(produtosBuscados) {
     const produtos: Produto[] = [];
     for (const p of produtosBuscados) {
-      produtos.push(new Produto(p.id, p.nome, p.descricao, p.valor, p.categoria));
+      produtos.push(new Produto(p.id, p.nome, p.descricao, p.valor, p.categoria, p.pathImagem, p.capacidade));
     }
     return produtos;
   }
