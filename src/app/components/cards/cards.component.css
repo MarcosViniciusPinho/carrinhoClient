@@ -1,1 +1,12 @@
+.zoom:hover {
+  -ms-transform: scale(5.5); /* IE 9 */
+  -webkit-transform: scale(5.5); /* Safari 3-8 */
+  transform: scale(5.5);
+}
 
+.zoom {
+  transition: transform .2s;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
