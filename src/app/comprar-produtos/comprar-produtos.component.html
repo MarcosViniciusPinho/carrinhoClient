@@ -1,3 +1,19 @@
-<p>
-  Em implementação!
-</p>
+<br />
+<p-table [value]="produtosEscolhidos" [style]="{'text-align':'center'}">
+    <ng-template pTemplate="header">
+        <tr>
+            <th></th>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-produto>
+        <tr>
+            <td><img [src]="produto.pathImagem" height="50"></td>
+            <td>{{ produto.nome }} - {{ produto.capacidade }}</td>
+            <td>{{ produto.valor | currency: 'BRL' }}</td>
+            <td>{{ produto.quantidade }}</td>
+        </tr>
+    </ng-template>
+</p-table>

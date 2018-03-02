@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ProdutoEscolhidoArray } from '../components/util/produto-escolhido-array';
+import { Produto } from '../domain/produto';
 
 @Component({
   selector: 'app-comprar-produtos',
@@ -10,9 +11,12 @@ import { ProdutoEscolhidoArray } from '../components/util/produto-escolhido-arra
 })
 export class ComprarProdutosComponent implements OnInit {
 
+  produtosEscolhidos: Produto[] = [];
+
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.produtosEscolhidos = ProdutoEscolhidoArray.list();
     this.redirecionarParaFirst();
   }
 
