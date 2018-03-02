@@ -12,15 +12,18 @@ import { AppComponent } from './app.component';
 import { StepModule } from './components/step/step.module';
 import { CardsModule } from './components/cards/cards.module';
 import { CarrinhoProdutosModule } from './components/carrinho-produtos/carrinho-produtos.module';
+import { ComprarProdutosModule } from './comprar-produtos/comprar-produtos.module';
 import { CardsComponent } from './components/cards/cards.component';
 import { CarrinhoProdutosComponent } from './components/carrinho-produtos/carrinho-produtos.component';
+import { ComprarProdutosComponent } from './comprar-produtos/comprar-produtos.component';
 
 registerLocaleData(localePt);
 
 const routes: Routes = [
   { path: '', redirectTo: '/first', pathMatch: 'full' },
   { path: 'first', component: CardsComponent },
-  { path: 'secound', component: CarrinhoProdutosComponent }
+  { path: 'secound', component: CarrinhoProdutosComponent},
+  { path: 'three', component: ComprarProdutosComponent}
 ];
 
 @NgModule({
@@ -37,7 +40,8 @@ const routes: Routes = [
 
     StepModule,
     CardsModule,
-    CarrinhoProdutosModule
+    CarrinhoProdutosModule,
+    ComprarProdutosModule
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'}, { provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]

@@ -62,6 +62,7 @@ export class StepComponent implements OnInit {
         this.router.navigate(['/secound']);
       } else {
         this.activeIndex = 2;
+        this.router.navigate(['/three']);
       }
     }
 
