@@ -1,6 +1,11 @@
 <div class="align-component-in-steps">
     <p-dataTable [value]="produtosEscolhidos" [style]="{'text-align':'center'}" emptyMessage="Carrinho está vazio">
-        <p-column header="Produto">
+      <p-column>
+        <ng-template pTemplate="body" let-produto="rowData">
+          <img [src]="produto.pathImagem" height="50">
+        </ng-template>
+      </p-column>
+      <p-column header="Produto">
             <ng-template pTemplate="body" let-produto="rowData">
                 {{ produto.nome }} - {{ produto.capacidade }}
             </ng-template>
@@ -12,7 +17,7 @@
         </p-column>
         <p-column header="Quantidade">
             <ng-template pTemplate="body" let-produto="rowData">
-                <p-spinner size="35" [(ngModel)]="produto.quantidade" [min]="1" [max]="1000" (click)="calcularTotalAposQuantidadeDeUmProdutoSerAlterada()"
+                <p-spinner size="25" [(ngModel)]="produto.quantidade" [min]="1" [max]="1000" (click)="calcularTotalAposQuantidadeDeUmProdutoSerAlterada()"
                           [readonly]="true"></p-spinner>
               </ng-template>
         </p-column>
