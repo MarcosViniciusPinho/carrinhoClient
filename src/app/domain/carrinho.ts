@@ -3,10 +3,10 @@ import { Usuario } from './usuario';
 
 export class Carrinho {
   usuario: Usuario;
-  produtos: ProdutoCarrinho[];
+  produtoCarrinhoList: ProdutoCarrinho[];
 
-  constructor(usuario: Usuario, produtos: ProdutoCarrinho[]) {
+  constructor(usuario: Usuario, produtoCarrinhoList: ProdutoCarrinho[]) {
      this.usuario = usuario;
-     this.produtos = produtos;
+     this.produtoCarrinhoList = produtoCarrinhoList;
   }
 }

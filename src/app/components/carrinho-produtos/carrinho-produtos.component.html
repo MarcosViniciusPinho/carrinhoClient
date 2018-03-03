@@ -12,7 +12,7 @@
         </p-column>
         <p-column header="Preço">
             <ng-template pTemplate="body" let-produto="rowData">
-                {{ produto.valor | currency: 'BRL' }}
+                {{ produto.valor * produto.quantidade | currency: 'BRL' }}
             </ng-template>
         </p-column>
         <p-column header="Quantidade">

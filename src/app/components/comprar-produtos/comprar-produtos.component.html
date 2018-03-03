@@ -1,4 +1,5 @@
 <div class="align-component-in-steps">
+    <button pButton type="button" (click)="salvar()" label="Finalizar Compra"></button>
   <p-table [value]="produtosEscolhidos" [style]="{'text-align':'center'}">
       <ng-template pTemplate="header">
           <tr>
@@ -12,7 +13,7 @@
           <tr>
               <td><img [src]="produto.pathImagem" height="50"></td>
               <td>{{ produto.nome }} - {{ produto.capacidade }}</td>
-              <td>{{ produto.valor | currency: 'BRL' }}</td>
+              <td>{{ produto.valor * produto.quantidade | currency: 'BRL' }}</td>
               <td>{{ produto.quantidade }}</td>
           </tr>
       </ng-template>

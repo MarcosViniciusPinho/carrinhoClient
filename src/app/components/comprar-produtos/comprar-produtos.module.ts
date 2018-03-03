@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {TableModule} from 'primeng/table';
+import {ButtonModule} from 'primeng/button';
 
 import { ComprarProdutosComponent } from './comprar-produtos.component';
 import { CarrinhoService } from '../../services/carrinho.service';
@@ -10,7 +11,8 @@ import { CarrinhoService } from '../../services/carrinho.service';
   imports: [
     CommonModule,
 
-    TableModule
+    TableModule,
+    ButtonModule
   ],
   providers: [CarrinhoService],
   declarations: [ComprarProdutosComponent],

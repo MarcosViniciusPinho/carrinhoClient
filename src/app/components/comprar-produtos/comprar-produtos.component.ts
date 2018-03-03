@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { ToastyService } from 'ng2-toasty';
+
 import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
 
 import { Carrinho } from '../../domain/carrinho';
@@ -22,7 +24,8 @@ export class ComprarProdutosComponent implements OnInit {
   usuario: Usuario;
 
   constructor(private router: Router,
-              private carrinhoService: CarrinhoService) { }
+              private carrinhoService: CarrinhoService,
+              private toastyService: ToastyService) { }
 
   ngOnInit() {
     this.usuario = new Usuario();
@@ -38,7 +41,10 @@ export class ComprarProdutosComponent implements OnInit {
 
   salvar() {
     this.carrinhoService.create(this.createCarrinho())
-      .then(carrinho => alert(`Carrinho gravado: ${carrinho}`));
+      .then(carrinho => {
+        this.toastyService.wait(`Prezado usuário ${carrinho.usuario.login}, sua compra foi realizada com sucesso!`);
+        this.router.navigate(['/first']);
+      });
   }
 
   createCarrinho() {
