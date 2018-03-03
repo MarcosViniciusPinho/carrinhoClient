@@ -12,10 +12,10 @@ import { AppComponent } from './app.component';
 import { StepModule } from './components/step/step.module';
 import { CardsModule } from './components/cards/cards.module';
 import { CarrinhoProdutosModule } from './components/carrinho-produtos/carrinho-produtos.module';
-import { ComprarProdutosModule } from './comprar-produtos/comprar-produtos.module';
+import { ComprarProdutosModule } from './components/comprar-produtos/comprar-produtos.module';
 import { CardsComponent } from './components/cards/cards.component';
 import { CarrinhoProdutosComponent } from './components/carrinho-produtos/carrinho-produtos.component';
-import { ComprarProdutosComponent } from './comprar-produtos/comprar-produtos.component';
+import { ComprarProdutosComponent } from './components/comprar-produtos/comprar-produtos.component';
 
 registerLocaleData(localePt);
 

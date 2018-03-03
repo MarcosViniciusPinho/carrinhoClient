@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ProdutoEscolhidoArray } from '../components/util/produto-escolhido-array';
-import { Produto } from '../domain/produto';
+import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
+import { Produto } from '../../domain/produto';
 
 @Component({
   selector: 'app-comprar-produtos',
