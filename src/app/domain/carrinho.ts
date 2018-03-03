@@ -2,12 +2,10 @@ import { ProdutoCarrinho } from './produtoCarrinho';
 import { Usuario } from './usuario';
 
 export class Carrinho {
-  id: number;
   usuario: Usuario;
   produtos: ProdutoCarrinho[];
 
-  constructor(id: number, usuario: Usuario, produtos: ProdutoCarrinho[]) {
-     this.id = id;
+  constructor(usuario: Usuario, produtos: ProdutoCarrinho[]) {
      this.usuario = usuario;
      this.produtos = produtos;
   }

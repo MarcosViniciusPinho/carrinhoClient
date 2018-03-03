@@ -2,7 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
+
+import { Carrinho } from '../../domain/carrinho';
+import { Usuario } from '../../domain/usuario';
 import { Produto } from '../../domain/produto';
+
+import { CarrinhoService } from '../../services/carrinho.service';
+import { ProdutoCarrinho } from '../../domain/produtoCarrinho';
 
 @Component({
   selector: 'app-comprar-produtos',
@@ -13,9 +19,13 @@ export class ComprarProdutosComponent implements OnInit {
 
   produtosEscolhidos: Produto[] = [];
 
-  constructor(private router: Router) { }
+  usuario: Usuario;
+
+  constructor(private router: Router,
+              private carrinhoService: CarrinhoService) { }
 
   ngOnInit() {
+    this.usuario = new Usuario();
     this.produtosEscolhidos = ProdutoEscolhidoArray.list();
     this.redirecionarParaFirst();
   }
@@ -24,6 +34,20 @@ export class ComprarProdutosComponent implements OnInit {
     if (ProdutoEscolhidoArray.isEmpty()) {
       this.router.navigate(['/first']);
     }
+  }
+
+  salvar() {
+    this.carrinhoService.create(this.createCarrinho())
+      .then(carrinho => alert(`Carrinho gravado: ${carrinho}`));
+  }
+
+  createCarrinho() {
+    this.usuario.login = 'MarcosPinho';
+    const produtosCarrinhos: ProdutoCarrinho[] = [];
+    this.produtosEscolhidos.forEach(produto => {
+      produtosCarrinhos.push(new ProdutoCarrinho(produto));
+    });
+    return new Carrinho(this.usuario, produtosCarrinhos);
   }
 
 }

@@ -12,7 +12,8 @@ import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
     <div class="alinhar-steps-com-navbar">
       <p-steps [model]="items" styleClass="steps-custom" [(activeIndex)]="activeIndex"></p-steps>
       <div class="alinhar-botao-next">
-        <button pButton type="button" (click)="avancarEtapa()" label="Next" [disabled]="habilitarBotaoNext()"></button>
+        <button pButton type="button" (click)="avancarEtapa()" label="Next" [disabled]="habilitarBotaoNext()"
+          *ngIf="showBotaoNext()"></button>
       </div>
     </div>
   `,
@@ -64,6 +65,10 @@ export class StepComponent implements OnInit {
         this.activeIndex = 2;
         this.router.navigate(['/three']);
       }
+    }
+
+    showBotaoNext() {
+      return this.activeIndex <= 1;
     }
 
 }

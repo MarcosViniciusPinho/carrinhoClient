@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import {TableModule} from 'primeng/table';
 
 import { ComprarProdutosComponent } from './comprar-produtos.component';
+import { CarrinhoService } from '../../services/carrinho.service';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { ComprarProdutosComponent } from './comprar-produtos.component';
 
     TableModule
   ],
+  providers: [CarrinhoService],
   declarations: [ComprarProdutosComponent],
   exports: [ComprarProdutosComponent]
 })
