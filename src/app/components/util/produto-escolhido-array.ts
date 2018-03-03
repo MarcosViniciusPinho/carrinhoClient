@@ -1,5 +1,4 @@
-// tslint:disable-next-line:quotemark
-import { Produto } from "../../domain/produto";
+import { Produto } from '../../domain/produto';
 
 export class ProdutoEscolhidoArray {
 

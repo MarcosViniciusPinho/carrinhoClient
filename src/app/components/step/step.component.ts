@@ -26,12 +26,12 @@ export class StepComponent implements OnInit {
 
     msgs: Message[] = [];
 
-    // tslint:disable-next-line:no-inferrable-types
-    activeIndex: number = 0;
+    activeIndex: number;
 
     constructor(private router: Router) {}
 
     ngOnInit() {
+        this.activeIndex = 0;
         this.items = [{
                 label: 'Produtos disponíveis',
                 command: (event: any) => {
