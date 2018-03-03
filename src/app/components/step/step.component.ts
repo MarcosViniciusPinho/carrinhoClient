@@ -53,7 +53,7 @@ export class StepComponent implements OnInit {
     }
 
     habilitarBotaoNext(): boolean {
-      return ProdutoEscolhidoArray.list().length === 0;
+      return ProdutoEscolhidoArray.isEmpty();
     }
 
     avancarEtapa() {

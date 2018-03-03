@@ -39,7 +39,7 @@ export class CardsComponent implements OnInit {
   }
 
   removerProdutoEscolhidoAoPesquisar(produtos: Produto[]) {
-    if (ProdutoEscolhidoArray.list().length !== 0) {
+    if (ProdutoEscolhidoArray.isNotEmpty()) {
       const produtosFiltrados: Produto[] = [];
       produtos.forEach(produto => {
         if (!ProdutoEscolhidoArray.contains(produto)) {

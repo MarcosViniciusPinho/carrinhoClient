@@ -21,4 +21,11 @@ export class ProdutoEscolhidoArray {
     return this.produtosEscolhidos.some(produtoEscolhido => produtoEscolhido.id === produto.id);
   }
 
+  static isEmpty() {
+    return this.produtosEscolhidos.length === 0;
+  }
+
+  static isNotEmpty() {
+    return !this.isEmpty();
+  }
 }

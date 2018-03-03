@@ -27,7 +27,7 @@ export class CarrinhoProdutosComponent implements OnInit {
   }
 
   redirecionarParaFirst() {
-    if (ProdutoEscolhidoArray.list().length === 0) {
+    if (ProdutoEscolhidoArray.isEmpty()) {
       this.router.navigate(['/first']);
     }
   }
