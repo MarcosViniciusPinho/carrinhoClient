@@ -23,13 +23,24 @@ export class ComprarProdutosComponent implements OnInit {
 
   usuario: Usuario;
 
+  totalAPagar: number;
+
   constructor(private router: Router,
               private carrinhoService: CarrinhoService) { }
 
   ngOnInit() {
     this.usuario = new Usuario();
     this.produtosEscolhidos = ProdutoEscolhidoArray.list();
+    this.totalAPagar = this.calcularTotalAoIniciar();
     this.redirecionarParaFirst();
+  }
+
+  calcularTotalAoIniciar() {
+    let totalAPagar = 0;
+    for (const produto of this.produtosEscolhidos) {
+        totalAPagar += produto.valor * produto.quantidade;
+    }
+    return totalAPagar;
   }
 
   redirecionarParaFirst() {
