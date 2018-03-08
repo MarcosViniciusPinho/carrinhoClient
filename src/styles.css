@@ -16,3 +16,7 @@
 #toasty .toast.toasty-theme-bootstrap .toast-text .toast-title {
   font-size: 20px;
 }
+
+.alinhar-text {
+  text-align: center;
+}

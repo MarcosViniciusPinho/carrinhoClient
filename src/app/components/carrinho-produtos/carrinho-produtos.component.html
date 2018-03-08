@@ -1,5 +1,5 @@
 <div class="align-component-in-steps">
-    <p-dataTable [value]="produtosEscolhidos" [style]="{'text-align':'center'}" emptyMessage="Carrinho está vazio">
+    <p-dataTable [value]="produtosEscolhidos" class="alinhar-text" emptyMessage="Carrinho está vazio">
       <p-column>
         <ng-template pTemplate="body" let-produto="rowData">
           <img [src]="produto.pathImagem" height="50">
