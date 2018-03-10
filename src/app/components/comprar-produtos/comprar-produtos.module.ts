@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
+import {AccordionModule} from 'primeng/accordion';
 
 import { ComprarProdutosComponent } from './comprar-produtos.component';
 import { CarrinhoService } from '../../services/carrinho.service';
@@ -12,7 +13,8 @@ import { CarrinhoService } from '../../services/carrinho.service';
     CommonModule,
 
     TableModule,
-    ButtonModule
+    ButtonModule,
+    AccordionModule
   ],
   providers: [CarrinhoService],
   declarations: [ComprarProdutosComponent],
