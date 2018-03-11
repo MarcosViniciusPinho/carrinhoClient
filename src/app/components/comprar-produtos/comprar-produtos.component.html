@@ -37,7 +37,9 @@
                 <div class="ui-g-12 ui-md-4">
                   <div class="ui-inputgroup">
                     <span class="ui-inputgroup-addon"><i class="fa fa-envelope"></i></span>
-                      <input type="text" pInputText placeholder="Informe o cep" ngModel name="cep" (blur)="buscarEnderecoPorCep(form)">
+                      <!-- <input type="text" pInputText placeholder="Informe o cep" ngModel name="cep" (blur)="buscarEnderecoPorCep(form)"> -->
+                      <p-inputMask ngModel mask="99999-999" name="cep" placeholder="Informe o cep"
+                            (onBlur)="buscarEnderecoPorCep(form)"></p-inputMask>
                   </div>
                 </div>
                 <div class="ui-g-12 ui-md-4">

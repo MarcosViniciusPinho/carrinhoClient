@@ -6,6 +6,7 @@ import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import {AccordionModule} from 'primeng/accordion';
 import {InputTextModule} from 'primeng/inputtext';
+import {InputMaskModule} from 'primeng/inputmask';
 
 import { ComprarProdutosComponent } from './comprar-produtos.component';
 import { CarrinhoService } from '../../services/carrinho.service';
@@ -19,7 +20,8 @@ import { CorreioService } from '../../services/correio.service';
     TableModule,
     ButtonModule,
     AccordionModule,
-    InputTextModule
+    InputTextModule,
+    InputMaskModule
   ],
   providers: [CarrinhoService, CorreioService],
   declarations: [ComprarProdutosComponent],
