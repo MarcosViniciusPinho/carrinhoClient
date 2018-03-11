@@ -11,9 +11,18 @@ export class CorreioService {
   buscarCep(cep: number): Promise<EnderecoWs> {
     return this.http.get(`https://viacep.com.br/ws/${cep}/json/`).toPromise().
       then(response => {
+        const enderecoWs = new EnderecoWs();
         const endereco = response.json();
-        return new EnderecoWs(endereco.logradouro, endereco.complemento, endereco.bairro,
-          endereco.localidade, endereco.uf);
+        if (response.json().erro) {
+          enderecoWs.error = response.json().erro;
+        } else {
+          enderecoWs.logradouro = endereco.logradouro;
+          enderecoWs.complemento = endereco.complemento;
+          enderecoWs.bairro = endereco.bairro;
+          enderecoWs.localidade = endereco.localidade;
+          enderecoWs.uf = endereco.uf;
+        }
+        return enderecoWs;
       });
   }
 

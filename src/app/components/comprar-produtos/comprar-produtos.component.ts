@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 
 import swal from 'sweetalert2';
 
+import { ToastyService } from 'ng2-toasty';
+
 import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
 
 import { Carrinho } from '../../domain/carrinho';
@@ -31,7 +33,8 @@ export class ComprarProdutosComponent implements OnInit {
 
   constructor(private router: Router,
               private carrinhoService: CarrinhoService,
-              private correioService: CorreioService) { }
+              private correioService: CorreioService,
+              private toastyService: ToastyService) { }
 
   ngOnInit() {
     this.usuario = new Usuario();
@@ -81,9 +84,18 @@ export class ComprarProdutosComponent implements OnInit {
   }
 
   buscarEnderecoPorCep(form: NgForm) {
-    this.correioService.buscarCep(form.value.cep).then(endereco => {
-      this.popularCamposDeEnderecoPorCepInformado(form, endereco);
-    });
+    if (form.value.cep) {
+      this.correioService.buscarCep(form.value.cep).then(endereco => {
+        this.popularCamposDeEnderecoPorCepInformado(form, endereco);
+        this.exibirNotificacaoDeCepNaoEncontrado(endereco);
+      });
+    }
+  }
+
+  exibirNotificacaoDeCepNaoEncontrado(endereco: EnderecoWs) {
+    if (endereco.error) {
+      this.toastyService.error(`O cep informado não foi encontrado`.toUpperCase());
+    }
   }
 
   popularCamposDeEnderecoPorCepInformado(form: NgForm, endereco: EnderecoWs) {
