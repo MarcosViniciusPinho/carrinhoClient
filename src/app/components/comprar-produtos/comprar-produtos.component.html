@@ -1,38 +1,78 @@
-<div class="alinhar-botao-finalizar-compra">
-    <button pButton type="button" (click)="salvar()" label="Finalizar Compra"></button>
-</div>
-<div class="align-component-in-steps">
-    <p-accordion>
-        <p-accordionTab header="Produtos Escolhidos">
-            <p-table [value]="produtosEscolhidos" class="alinhar-text">
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th></th>
-                        <th>Produto</th>
-                        <th>Preço</th>
-                        <th>Quantidade</th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-produto>
-                    <tr>
-                        <td><img [src]="produto.pathImagem" height="50"></td>
-                        <td>{{ produto.nome }} - {{ produto.capacidade }}</td>
-                        <td>{{ produto.valor * produto.quantidade | currency: 'BRL' }}</td>
-                        <td>{{ produto.quantidade }}</td>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="footer" let-produto>
-                    <tr>
-                      <td colspan="4"><strong>Total: R{{ totalAPagar | currency }}</strong></td>
-                    </tr>
-                </ng-template>
-            </p-table>
-        </p-accordionTab>
-        <p-accordionTab header="Endereço para entrega" [selected]="true">
-            Em implementação
-        </p-accordionTab>
-        <p-accordionTab header="Forma de Pagamento" [disabled]="true">
-            Só vai ser implementado caso o projeto vingar
-        </p-accordionTab>
-    </p-accordion>
-</div>
+<form #form="ngForm" (ngSubmit)="salvar(form)" novalidate>
+    <div class="alinhar-botao-finalizar-compra">
+        <button pButton type="submit" label="Finalizar Compra"></button>
+    </div>
+    <div class="align-component-in-steps">
+        <p-accordion>
+            <p-accordionTab header="Produtos Escolhidos">
+                <p-table [value]="produtosEscolhidos" class="alinhar-text">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th></th>
+                            <th>Produto</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-produto>
+                        <tr>
+                            <td><img [src]="produto.pathImagem" height="50"></td>
+                            <td>{{ produto.nome }} - {{ produto.capacidade }}</td>
+                            <td>{{ produto.valor * produto.quantidade | currency: 'BRL' }}</td>
+                            <td>{{ produto.quantidade }}</td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="footer" let-produto>
+                        <tr>
+                          <td colspan="4"><strong>Total: R{{ totalAPagar | currency }}</strong></td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </p-accordionTab>
+            <p-accordionTab header="Endereço para entrega" [selected]="true">
+              <div class="ui-g ui-fluid">
+                <div class="ui-g-12 ui-md-4">
+                  <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="fa fa-envelope"></i></span>
+                      <input type="text" pInputText placeholder="Informe o cep" ngModel name="cep">
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                  <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="fa fa-road"></i></span>
+                    <input type="text" pInputText placeholder="Informe o logradouro" ngModel name="logradouro">
+                  </div>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                  <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="fa fa-home"></i></span>
+                    <input type="text" pInputText placeholder="Informe o complemento" ngModel name="complemento">
+                  </div>
+                </div>
+
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                      <span class="ui-inputgroup-addon"><i class="fa fa-street-view"></i></span>
+                        <input type="text" pInputText placeholder="Informe o bairro" ngModel name="bairro">
+                    </div>
+                  </div>
+                  <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                      <span class="ui-inputgroup-addon"><i class="fa fa-globe"></i></span>
+                      <input type="text" pInputText placeholder="Informe o estado" ngModel name="estado">
+                    </div>
+                  </div>
+                  <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                      <span class="ui-inputgroup-addon"><i class="fa fa-globe"></i></span>
+                      <input type="text" pInputText placeholder="Informe o municipio" ngModel name="municipio">
+                    </div>
+                  </div>
+              </div>
+            </p-accordionTab>
+            <p-accordionTab header="Forma de Pagamento(Só será implementado se for colocado em produção)" [disabled]="true">
+                Só vai ser implementado caso o projeto vingar
+            </p-accordionTab>
+        </p-accordion>
+    </div>
+</form>

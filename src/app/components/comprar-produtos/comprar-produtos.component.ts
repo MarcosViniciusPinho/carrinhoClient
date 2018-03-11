@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 import swal from 'sweetalert2';
 
@@ -8,6 +9,7 @@ import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
 import { Carrinho } from '../../domain/carrinho';
 import { Usuario } from '../../domain/usuario';
 import { Produto } from '../../domain/produto';
+import { Endereco } from '../../domain/endereco';
 
 import { CarrinhoService } from '../../services/carrinho.service';
 import { ProdutoCarrinho } from '../../domain/produtoCarrinho';
@@ -49,8 +51,8 @@ export class ComprarProdutosComponent implements OnInit {
     }
   }
 
-  salvar() {
-    this.carrinhoService.create(this.createCarrinho())
+  salvar(form: NgForm) {
+    this.carrinhoService.create(this.createCarrinho(form))
       .then(carrinho => {
         swal({
           title: 'Sucesso!',
@@ -64,7 +66,9 @@ export class ComprarProdutosComponent implements OnInit {
       });
   }
 
-  createCarrinho() {
+  createCarrinho(form: NgForm) {
+    this.usuario.endereco = new Endereco(form.value.cep, form.value.logradouro, form.value.complemento,
+      form.value.bairro, form.value.municipio, form.value.estado);
     this.usuario.login = 'MarcosPinho';
     const produtosCarrinhos: ProdutoCarrinho[] = [];
     this.produtosEscolhidos.forEach(produto => {

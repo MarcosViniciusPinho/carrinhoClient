@@ -3,7 +3,7 @@
     <input id="float-input" type="text" size="159" pInputText #campoPesquisado>
     <label for="float-input">Pesquise por um nome de um produto</label>
     <button pButton type="button" label="Pesquisar" (click)="pesquisar(campoPesquisado.value)"></button>
-</span>
+  </span>
 
 <p-dataGrid [value]="produtos" [paginator]="true" [rows]="12" [totalRecords]="totalRecords" emptyMessage="Produto(s) indisponível no momento"
     class="alinhar-text">
