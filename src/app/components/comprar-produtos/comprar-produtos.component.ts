@@ -12,6 +12,7 @@ import { Produto } from '../../domain/produto';
 import { Endereco } from '../../domain/endereco';
 
 import { CarrinhoService } from '../../services/carrinho.service';
+import { CorreioService } from '../../services/correio.service';
 import { ProdutoCarrinho } from '../../domain/produtoCarrinho';
 
 @Component({
@@ -28,7 +29,8 @@ export class ComprarProdutosComponent implements OnInit {
   totalAPagar: number;
 
   constructor(private router: Router,
-              private carrinhoService: CarrinhoService) { }
+              private carrinhoService: CarrinhoService,
+              private correioService: CorreioService) { }
 
   ngOnInit() {
     this.usuario = new Usuario();
@@ -75,6 +77,20 @@ export class ComprarProdutosComponent implements OnInit {
       produtosCarrinhos.push(new ProdutoCarrinho(produto));
     });
     return new Carrinho(this.usuario, produtosCarrinhos, endereco);
+  }
+
+  buscarEnderecoPorCep(form: NgForm) {
+    this.correioService.buscarCep(form.value.cep).then(endereco => {
+      this.popularCamposDeEnderecoPorCepInformado(form, endereco);
+    });
+  }
+
+  popularCamposDeEnderecoPorCepInformado(form: NgForm, endereco: any) {
+    form.value.logradouro = endereco.logradouro;
+    form.value.complemento = endereco.complemento;
+    form.value.bairro = endereco.bairro;
+    form.value.municipio = endereco.localidade;
+    form.value.estado = endereco.uf;
   }
 
 }

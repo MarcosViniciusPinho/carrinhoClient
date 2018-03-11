@@ -9,6 +9,7 @@ import {InputTextModule} from 'primeng/inputtext';
 
 import { ComprarProdutosComponent } from './comprar-produtos.component';
 import { CarrinhoService } from '../../services/carrinho.service';
+import { CorreioService } from '../../services/correio.service';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { CarrinhoService } from '../../services/carrinho.service';
     AccordionModule,
     InputTextModule
   ],
-  providers: [CarrinhoService],
+  providers: [CarrinhoService, CorreioService],
   declarations: [ComprarProdutosComponent],
   exports: [ComprarProdutosComponent]
 })
