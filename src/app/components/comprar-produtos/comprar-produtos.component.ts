@@ -10,6 +10,7 @@ import { Carrinho } from '../../domain/carrinho';
 import { Usuario } from '../../domain/usuario';
 import { Produto } from '../../domain/produto';
 import { Endereco } from '../../domain/endereco';
+import { EnderecoWs } from '../../domain/enderecoWs';
 
 import { CarrinhoService } from '../../services/carrinho.service';
 import { CorreioService } from '../../services/correio.service';
@@ -85,7 +86,7 @@ export class ComprarProdutosComponent implements OnInit {
     });
   }
 
-  popularCamposDeEnderecoPorCepInformado(form: NgForm, endereco: any) {
+  popularCamposDeEnderecoPorCepInformado(form: NgForm, endereco: EnderecoWs) {
     form.value.logradouro = endereco.logradouro;
     form.value.complemento = endereco.complemento;
     form.value.bairro = endereco.bairro;
