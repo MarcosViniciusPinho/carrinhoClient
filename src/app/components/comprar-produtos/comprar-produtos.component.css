@@ -1,3 +1,16 @@
 .alinhar-botao-finalizar-compra{
   margin-left: 1400px;
 }
+
+p-inputmask {
+  flex: 1 1 auto;
+  border: 1px solid #77d5f7;
+  border-radius: 7px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0 none;
+}
+
+input {
+  border: 1px solid #77d5f7;
+}
