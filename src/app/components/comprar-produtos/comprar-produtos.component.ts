@@ -73,7 +73,7 @@ export class ComprarProdutosComponent implements OnInit {
   }
 
   createCarrinho(form: NgForm) {
-    const endereco = new Endereco(form.value.cep.replace('-', ''), form.value.logradouro, form.value.complemento,
+    const endereco = new Endereco(form.value.cep, form.value.logradouro, form.value.complemento,
       form.value.bairro, form.value.municipio, form.value.estado);
     this.usuario.login = 'MarcosPinho';
     const produtosCarrinhos: ProdutoCarrinho[] = [];
