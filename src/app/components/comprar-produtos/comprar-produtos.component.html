@@ -36,38 +36,38 @@
                 </div>
                 <div class="ui-g-12 ui-md-4">
                   <div class="ui-inputgroup">
-                    <span class="ui-inputgroup-addon"><i class="fa fa-envelope"></i></span>
+                    <span class="ui-inputgroup-addon"><i class="fa fa-envelope" title="Cep"></i></span>
                       <input type="text" pInputText placeholder="Informe o cep" ngModel name="cep" (blur)="buscarEnderecoPorCep(form)" mask="00.000-000">
                   </div>
                 </div>
                 <div class="ui-g-12 ui-md-4">
                   <div class="ui-inputgroup">
-                    <span class="ui-inputgroup-addon"><i class="fa fa-road"><span class="required">*</span></i></span>
+                    <span class="ui-inputgroup-addon"><i class="fa fa-road" title="Logradouro"><span class="required">*</span></i></span>
                     <input type="text" pInputText placeholder="Informe o logradouro" [ngModel]="form.value.logradouro" name="logradouro" required>
                   </div>
                 </div>
                 <div class="ui-g-12 ui-md-4">
                   <div class="ui-inputgroup">
-                    <span class="ui-inputgroup-addon"><i class="fa fa-home"></i></span>
+                    <span class="ui-inputgroup-addon"><i class="fa fa-home" title="Complemento"></i></span>
                     <input type="text" pInputText placeholder="Informe o complemento" [ngModel]="form.value.complemento" name="complemento">
                   </div>
                 </div>
 
                 <div class="ui-g-12 ui-md-4">
                     <div class="ui-inputgroup">
-                      <span class="ui-inputgroup-addon"><i class="fa fa-street-view"><span class="required">*</span></i></span>
+                      <span class="ui-inputgroup-addon"><i class="fa fa-street-view" title="Bairro"><span class="required">*</span></i></span>
                         <input type="text" pInputText placeholder="Informe o bairro" [ngModel]="form.value.bairro" name="bairro" required>
                     </div>
                   </div>
                   <div class="ui-g-12 ui-md-4">
                     <div class="ui-inputgroup">
-                      <span class="ui-inputgroup-addon"><i class="fa fa-globe"><span class="required">*</span></i></span>
+                      <span class="ui-inputgroup-addon"><i class="fa fa-globe" title="Estado"><span class="required">*</span></i></span>
                       <input type="text" pInputText placeholder="Informe o estado" [ngModel]="form.value.estado" name="estado" required>
                     </div>
                   </div>
                   <div class="ui-g-12 ui-md-4">
                     <div class="ui-inputgroup">
-                      <span class="ui-inputgroup-addon"><i class="fa fa-globe"><span class="required">*</span></i></span>
+                      <span class="ui-inputgroup-addon"><i class="fa fa-globe" title="Município"><span class="required">*</span></i></span>
                       <input type="text" pInputText placeholder="Informe o municipio" [ngModel]="form.value.municipio" name="municipio" required>
                     </div>
                   </div>
