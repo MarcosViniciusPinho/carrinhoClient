@@ -7,6 +7,8 @@ import {ButtonModule} from 'primeng/button';
 import {AccordionModule} from 'primeng/accordion';
 import {InputTextModule} from 'primeng/inputtext';
 
+import {NgxMaskModule} from 'ngx-mask';
+
 import { ComprarProdutosComponent } from './comprar-produtos.component';
 import { CarrinhoService } from '../../services/carrinho.service';
 import { CorreioService } from '../../services/correio.service';
@@ -19,7 +21,9 @@ import { CorreioService } from '../../services/correio.service';
     TableModule,
     ButtonModule,
     AccordionModule,
-    InputTextModule
+    InputTextModule,
+
+    NgxMaskModule.forRoot()
   ],
   providers: [CarrinhoService, CorreioService],
   declarations: [ComprarProdutosComponent],
