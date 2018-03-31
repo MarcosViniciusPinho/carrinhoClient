@@ -62,7 +62,10 @@
                   <div class="ui-g-12 ui-md-4">
                     <div class="ui-inputgroup">
                       <span class="ui-inputgroup-addon"><i class="fa fa-globe" title="Estado"><span class="required">*</span></i></span>
-                      <input type="text" pInputText placeholder="Informe o estado" [ngModel]="form.value.estado" name="estado" required>
+                      <select [ngModel]="estadoSelecionado" name="estado" required pInputText>
+                        <option value="">Informe um estado</option>
+                        <option *ngFor="let estado of estados" [ngValue]="estado.sigla">{{estado.sigla}}</option>
+                      </select>
                     </div>
                   </div>
                   <div class="ui-g-12 ui-md-4">

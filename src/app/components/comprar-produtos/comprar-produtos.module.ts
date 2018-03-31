@@ -12,6 +12,7 @@ import {NgxMaskModule} from 'ngx-mask';
 import { ComprarProdutosComponent } from './comprar-produtos.component';
 import { CarrinhoService } from '../../services/carrinho.service';
 import { CorreioService } from '../../services/correio.service';
+import { EstadoService } from '../../services/estado.service';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { CorreioService } from '../../services/correio.service';
 
     NgxMaskModule.forRoot()
   ],
-  providers: [CarrinhoService, CorreioService],
+  providers: [CarrinhoService, CorreioService, EstadoService],
   declarations: [ComprarProdutosComponent],
   exports: [ComprarProdutosComponent]
 })

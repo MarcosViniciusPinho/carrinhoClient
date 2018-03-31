@@ -13,10 +13,12 @@ import { Usuario } from '../../domain/usuario';
 import { Produto } from '../../domain/produto';
 import { Endereco } from '../../domain/endereco';
 import { EnderecoWs } from '../../domain/enderecoWs';
+import { ProdutoCarrinho } from '../../domain/produtoCarrinho';
+import { Estado } from '../../domain/estado';
 
 import { CarrinhoService } from '../../services/carrinho.service';
 import { CorreioService } from '../../services/correio.service';
-import { ProdutoCarrinho } from '../../domain/produtoCarrinho';
+import { EstadoService } from '../../services/estado.service';
 
 @Component({
   selector: 'app-comprar-produtos',
@@ -31,16 +33,22 @@ export class ComprarProdutosComponent implements OnInit {
 
   totalAPagar: number;
 
+  estados: Estado[] = [];
+
+  estadoSelecionado: String;
+
   constructor(private router: Router,
               private carrinhoService: CarrinhoService,
               private correioService: CorreioService,
-              private toastyService: ToastyService) { }
+              private toastyService: ToastyService,
+              private estadoService: EstadoService) { }
 
   ngOnInit() {
     this.usuario = new Usuario();
     this.produtosEscolhidos = ProdutoEscolhidoArray.list();
     this.totalAPagar = this.calcularTotalAoIniciar();
     this.redirecionarParaFirst();
+    this.carregarEstados();
   }
 
   calcularTotalAoIniciar() {
@@ -95,6 +103,7 @@ export class ComprarProdutosComponent implements OnInit {
   exibirNotificacaoDeCepNaoEncontrado(endereco: EnderecoWs) {
     if (endereco.error) {
       this.toastyService.error(`O cep informado não foi encontrado`.toUpperCase());
+      this.estadoSelecionado = '';
     }
   }
 
@@ -103,7 +112,12 @@ export class ComprarProdutosComponent implements OnInit {
     form.value.complemento = endereco.complemento;
     form.value.bairro = endereco.bairro;
     form.value.municipio = endereco.localidade;
-    form.value.estado = endereco.uf;
+    this.estadoSelecionado = endereco.uf;
+  }
+
+  carregarEstados() {
+    this.estadoSelecionado = '';
+    this.estadoService.list().then(estadosCarregados => this.estados = estadosCarregados);
   }
 
 }
