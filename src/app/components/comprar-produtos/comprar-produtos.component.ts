@@ -111,7 +111,7 @@ export class ComprarProdutosComponent implements OnInit {
   exibirNotificacaoDeCepNaoEncontrado(endereco: EnderecoWs) {
     if (endereco.error) {
       this.toastyService.error(`O cep informado não foi encontrado`.toUpperCase());
-      this.limparCamposSelect();
+      this.estadoSelecionado = '';
     }
   }
 
@@ -119,24 +119,19 @@ export class ComprarProdutosComponent implements OnInit {
     form.value.logradouro = endereco.logradouro;
     form.value.complemento = endereco.complemento;
     form.value.bairro = endereco.bairro;
-    this.municipioSelecionado = endereco.localidade;
+    /* this.municipioSelecionado = endereco.localidade; */
     this.estadoSelecionado = endereco.uf;
   }
 
   carregarEstados() {
-    this.limparCamposSelect();
+    this.estadoSelecionado = '';
+    this.municipioSelecionado = '';
     this.estadoService.list().then(estadosCarregados => this.estados = estadosCarregados);
   }
 
   carregarMunicipios() {
-    if(this.estadoSelecionado) {
-      this.municipioService.listByEstado(this.estadoSelecionado).then(municipiosCarregados => this.municipios = municipiosCarregados);
-    }
-  }
-
-  limparCamposSelect() {
-    this.estadoSelecionado = '';
     this.municipioSelecionado = '';
+    this.municipioService.listByEstado(this.estadoSelecionado).then(municipiosCarregados => this.municipios = municipiosCarregados);
   }
 
 }
