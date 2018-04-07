@@ -13,6 +13,7 @@ import { StepModule } from './components/step/step.module';
 import { CardsModule } from './components/cards/cards.module';
 import { CarrinhoProdutosModule } from './components/carrinho-produtos/carrinho-produtos.module';
 import { ComprarProdutosModule } from './components/comprar-produtos/comprar-produtos.module';
+import { NavbarModule } from './components/navbar/navbar.module';
 import { CardsComponent } from './components/cards/cards.component';
 import { CarrinhoProdutosComponent } from './components/carrinho-produtos/carrinho-produtos.component';
 import { ComprarProdutosComponent } from './components/comprar-produtos/comprar-produtos.component';
@@ -41,7 +42,8 @@ const routes: Routes = [
     StepModule,
     CardsModule,
     CarrinhoProdutosModule,
-    ComprarProdutosModule
+    ComprarProdutosModule,
+    NavbarModule
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'}, { provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]
