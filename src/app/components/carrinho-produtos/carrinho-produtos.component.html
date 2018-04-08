@@ -17,7 +17,7 @@
         </p-column>
         <p-column header="Quantidade">
             <ng-template pTemplate="body" let-produto="rowData">
-                <p-spinner size="25" [(ngModel)]="produto.quantidade" [min]="1" [max]="1000" (click)="calcularTotalAposQuantidadeDeUmProdutoSerAlterada()"
+                <p-spinner [(ngModel)]="produto.quantidade" [min]="1" [max]="1000" (click)="calcularTotalAposQuantidadeDeUmProdutoSerAlterada()"
                           [readonly]="true"></p-spinner>
               </ng-template>
         </p-column>

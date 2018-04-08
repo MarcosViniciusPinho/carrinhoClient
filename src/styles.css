@@ -36,6 +36,9 @@ span.required{
   .campo-pesquisar-responsive {
     width: 63.5%;
   }
+  .ui-widget-header .ui-inputtext, .ui-widget-content .ui-inputtext {
+    width: 85%;
+  }
 }
 
 @media screen and (min-width: 375px) {
@@ -44,6 +47,9 @@ span.required{
   }
   .campo-pesquisar-responsive {
     width: 67.8%;
+  }
+  .ui-widget-header .ui-inputtext, .ui-widget-content .ui-inputtext {
+    width: 85%;
   }
 }
 
@@ -75,6 +81,9 @@ span.required{
   .campo-pesquisar-responsive {
     width: 84.9%;
   }
+  .ui-widget-header .ui-inputtext, .ui-widget-content .ui-inputtext {
+    width: 85%;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -83,6 +92,9 @@ span.required{
   }
   .campo-pesquisar-responsive {
     width: 88%;
+  }
+  .ui-widget-header .ui-inputtext, .ui-widget-content .ui-inputtext {
+    width: 90%;
   }
 }
 
