@@ -26,8 +26,55 @@
   color: #555555;
 }
 
-.alinhar-botao-next{
-  margin-left: 1490px;
+@media screen and (min-width: 320px) {
+  .alinhar-botao-next{
+    margin-left: 79%;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .alinhar-botao-next{
+    margin-left: 80%;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .alinhar-botao-next{
+    margin-left: 85%;
+    margin-top: 40px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .alinhar-botao-next{
+    margin-left: 90%;
+    margin-top: 40px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .alinhar-botao-next{
+    margin-left: 90%;
+    margin-top: 40px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .alinhar-botao-next{
+    margin-left: 92%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .alinhar-botao-next{
+    margin-left: 94%;
+  }
+}
+
+@media screen and (min-width: 2500px) {
+  .alinhar-botao-next{
+    margin-left: 96%;
+  }
 }
 
 .alinhar-steps-com-navbar{
