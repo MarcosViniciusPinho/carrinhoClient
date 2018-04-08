@@ -11,7 +11,7 @@ import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
   template: `
     <div class="alinhar-steps-com-navbar">
       <p-steps [model]="items" styleClass="steps-custom" [(activeIndex)]="activeIndex"></p-steps>
-      <div class="alinhar-botao-next">
+      <div class="botao-next-responsive">
         <button pButton type="button" (click)="avancarEtapa()" label="Next" [disabled]="habilitarBotaoNext()"
           *ngIf="showBotaoNext()"></button>
       </div>

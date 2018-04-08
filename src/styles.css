@@ -30,7 +30,7 @@ span.required{
 }
 
 @media screen and (min-width: 320px) {
-  .alinhar-botao-next{
+  .botao-next-responsive{
     margin-left: 79%;
   }
   .campo-pesquisar-responsive {
@@ -39,7 +39,7 @@ span.required{
 }
 
 @media screen and (min-width: 375px) {
-  .alinhar-botao-next{
+  .botao-next-responsive{
     margin-left: 80%;
   }
   .campo-pesquisar-responsive {
@@ -48,7 +48,7 @@ span.required{
 }
 
 @media screen and (min-width: 500px) {
-  .alinhar-botao-next{
+  .botao-next-responsive{
     margin-left: 85%;
     margin-top: 40px;
   }
@@ -58,7 +58,7 @@ span.required{
 }
 
 @media screen and (min-width: 600px) {
-  .alinhar-botao-next{
+  .botao-next-responsive{
     margin-left: 90%;
     margin-top: 40px;
   }
@@ -68,7 +68,7 @@ span.required{
 }
 
 @media screen and (min-width: 768px) {
-  .alinhar-botao-next{
+  .botao-next-responsive{
     margin-left: 90%;
     margin-top: 40px;
   }
@@ -78,7 +78,7 @@ span.required{
 }
 
 @media screen and (min-width: 1024px) {
-  .alinhar-botao-next{
+  .botao-next-responsive{
     margin-left: 92%;
   }
   .campo-pesquisar-responsive {
@@ -87,7 +87,7 @@ span.required{
 }
 
 @media screen and (min-width: 1440px) {
-  .alinhar-botao-next{
+  .botao-next-responsive{
     margin-left: 94%;
   }
   .campo-pesquisar-responsive {
@@ -96,7 +96,7 @@ span.required{
 }
 
 @media screen and (min-width: 2500px) {
-  .alinhar-botao-next{
+  .botao-next-responsive{
     margin-left: 96%;
   }
   .campo-pesquisar-responsive {
