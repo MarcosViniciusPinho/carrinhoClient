@@ -29,6 +29,10 @@ span.required{
   color: red;
 }
 
+.space {
+  padding-left: 10%;
+}
+
 @media screen and (min-width: 320px) {
   .botao-next-responsive{
     margin-left: 79%;
@@ -41,6 +45,9 @@ span.required{
   }
   .botao-finalizar-responsive {
     margin-left: 48%;
+  }
+  .label-usuario-logado {
+    margin-left: 38%;
   }
 }
 
@@ -56,6 +63,9 @@ span.required{
   }
   .botao-finalizar-responsive {
     margin-left: 65%;
+  }
+  .label-usuario-logado {
+    margin-left: 48%;
   }
 }
 
@@ -96,6 +106,9 @@ span.required{
   .botao-finalizar-responsive {
     margin-left: 79%;
   }
+  .label-usuario-logado {
+    margin-left: 75%;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -111,6 +124,9 @@ span.required{
   .botao-finalizar-responsive {
     margin-left: 84%;
   }
+  .label-usuario-logado {
+    margin-left: 81%;
+  }
 }
 
 @media screen and (min-width: 1326px) {
@@ -122,6 +138,9 @@ span.required{
   }
   .botao-finalizar-responsive {
     margin-left: 88%;
+  }
+  .label-usuario-logado {
+    margin-left: 86%;
   }
 }
 
@@ -135,6 +154,9 @@ span.required{
   .botao-finalizar-responsive {
     margin-left: 88%;
   }
+  .label-usuario-logado {
+    margin-left: 87%;
+  }
 }
 
 @media screen and (min-width: 2500px) {
@@ -145,6 +167,9 @@ span.required{
     width: 95.6%;
   }
   .botao-finalizar-responsive {
+    margin-left: 92%;
+  }
+  .label-usuario-logado {
     margin-left: 92%;
   }
 }
