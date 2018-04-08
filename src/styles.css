@@ -39,6 +39,9 @@ span.required{
   .ui-widget-header .ui-inputtext, .ui-widget-content .ui-inputtext {
     width: 85%;
   }
+  .botao-finalizar-responsive {
+    margin-left: 48%;
+  }
 }
 
 @media screen and (min-width: 375px) {
@@ -51,6 +54,9 @@ span.required{
   .ui-widget-header .ui-inputtext, .ui-widget-content .ui-inputtext {
     width: 85%;
   }
+  .botao-finalizar-responsive {
+    margin-left: 65%;
+  }
 }
 
 @media screen and (min-width: 500px) {
@@ -60,6 +66,9 @@ span.required{
   }
   .campo-pesquisar-responsive {
     width: 76.4%;
+  }
+  .botao-finalizar-responsive {
+    margin-left: 75%;
   }
 }
 
@@ -84,6 +93,9 @@ span.required{
   .ui-widget-header .ui-inputtext, .ui-widget-content .ui-inputtext {
     width: 85%;
   }
+  .botao-finalizar-responsive {
+    margin-left: 79%;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -96,6 +108,21 @@ span.required{
   .ui-widget-header .ui-inputtext, .ui-widget-content .ui-inputtext {
     width: 90%;
   }
+  .botao-finalizar-responsive {
+    margin-left: 84%;
+  }
+}
+
+@media screen and (min-width: 1326px) {
+  .botao-next-responsive{
+    margin-left: 94%;
+  }
+  .campo-pesquisar-responsive {
+    width: 91.7%;
+  }
+  .botao-finalizar-responsive {
+    margin-left: 88%;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -105,13 +132,19 @@ span.required{
   .campo-pesquisar-responsive {
     width: 92%;
   }
+  .botao-finalizar-responsive {
+    margin-left: 88%;
+  }
 }
 
 @media screen and (min-width: 2500px) {
-  .botao-next-responsive{
+  .botao-next-responsive {
     margin-left: 96%;
   }
   .campo-pesquisar-responsive {
     width: 95.6%;
+  }
+  .botao-finalizar-responsive {
+    margin-left: 92%;
   }
 }
