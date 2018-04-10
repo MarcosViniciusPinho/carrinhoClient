@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
-<app-step></app-step>
+<app-navbar *ngIf="exibirPosLogin()"></app-navbar>
+<app-step *ngIf="exibirPosLogin()"></app-step>
 <router-outlet></router-outlet>
 <ng2-toasty></ng2-toasty>
