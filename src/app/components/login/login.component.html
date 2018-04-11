@@ -1,5 +1,4 @@
-
- <div class="container" style="max-width: 400px; margin: auto">
+<div class="container" style="max-width: 400px; margin: auto">
 
   <form autocomplete="off" #form="ngForm">
     <div class="ui-g ui-fluid">
@@ -28,8 +27,10 @@
         <button pButton type="submit" label="Login" [disabled]="!form.valid"
           (click)="login(usuario.value, senha.value)"></button>
       </div>
-
+      
+      <div class="ui-g-12 alinhar-text">
+        <span>Não tem registro? <a href="#">Clique aqui</a></span>
+      </div>
     </div>
   </form>
-
 </div>
