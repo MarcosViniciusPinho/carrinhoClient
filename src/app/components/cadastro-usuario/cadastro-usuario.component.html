@@ -6,13 +6,13 @@
           </div>
           <div class="ui-g-6">
             <div class="ui-inputgroup">
-              <span class="ui-inputgroup-addon"><i class="fa fa-envelope" title="Nome"><span class="required">*</span></i></span>
+              <span class="ui-inputgroup-addon"><i class="fa fa-id-card" title="Nome"><span class="required">*</span></i></span>
                 <input type="text" pInputText placeholder="Informe o nome" ngModel name="nome" required>
             </div>
           </div>
           <div class="ui-g-6">
               <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon"><i class="fa fa-envelope" title="Sobrenome"><span class="required">*</span></i></span>
+                <span class="ui-inputgroup-addon"><i class="fa fa-id-card" title="Sobrenome"><span class="required">*</span></i></span>
                   <input type="text" pInputText placeholder="Informe o sobrenome" ngModel name="sobrenome" required>
               </div>
           </div>
@@ -40,10 +40,10 @@
                 <button type="button" pButton label="Salvar" icon="fa-check" [disabled]="form.invalid"></button>
             </div>
             <div class="ui-g-3">
-                <button type="button" pButton (click)="close()" label="Fechar" icon="fa-close"></button>
+                <button type="button" pButton (click)="close()" label="Fechar" icon="fa-close" class="ui-button-danger"></button>
             </div>
         </p-footer>
   </form>    
 </p-dialog>
 
-<button type="button" (click)="show()" pButton label="Registrar"></button>
+<span>Não tem cadastro? <a href="#" (click)="show()">Clique aqui</a></span>

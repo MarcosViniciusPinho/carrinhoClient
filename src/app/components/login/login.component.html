@@ -8,24 +8,22 @@
       </div>
 
       <div class="ui-g-12">
-        <span class="ui-float-label">
-            <input id="float-input" type="email" name="usuario" pInputText
-            ngModel required #usuario>
-            <label for="float-input">E-mail</label>
-          </span>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="fa fa-user" title="Login"></i></span>
+              <input type="text" pInputText placeholder="Login" ngModel name="login" required #login>
+          </div>
       </div>
 
       <div class="ui-g-12">
-        <span class="ui-float-label">
-            <input id="float-input" type="password" name="senha" pInputText
-            ngModel required #senha>
-            <label for="float-input">Senha</label>
-          </span>
+          <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="fa fa-lock" title="Senha"></i></span>
+              <input type="password" pInputText placeholder="Senha" ngModel name="senha" required #senha>
+          </div>
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Login" [disabled]="!form.valid"
-          (click)="login(usuario.value, senha.value)"></button>
+        <button pButton type="submit" label="Entrar" [disabled]="!form.valid"
+          (click)="login(login.value, senha.value)"></button>
       </div>
       
       <div class="ui-g-12 alinhar-text">
