@@ -4,6 +4,7 @@ export class Usuario {
   sobrenome: string;
   login: string;
   senha: string;
+  email: string;
 
   constructor () {}
 }

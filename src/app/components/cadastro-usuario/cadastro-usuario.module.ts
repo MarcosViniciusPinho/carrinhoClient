@@ -8,6 +8,8 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 
 import { CadastroUsuarioComponent } from './cadastro-usuario.component';
 
+import { UsuarioService } from '../../services/usuario.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +19,7 @@ import { CadastroUsuarioComponent } from './cadastro-usuario.component';
     ButtonModule,
     InputTextModule
   ],
+  providers: [UsuarioService],
   exports: [CadastroUsuarioComponent],
   declarations: [CadastroUsuarioComponent]
 })
