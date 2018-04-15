@@ -7,31 +7,36 @@
             <div class="ui-g-6">
                 <div class="ui-inputgroup">
                 <span class="ui-inputgroup-addon"><i class="fa fa-id-card" title="Nome"><span class="required">*</span></i></span>
-                    <input type="text" pInputText placeholder="Informe o nome" [(ngModel)]="usuario.nome" name="nome" required>
+                    <input type="text" pInputText placeholder="Informe o nome" [(ngModel)]="usuario.nome" name="nome" required 
+                        maxlength="30">
                 </div>
             </div>
             <div class="ui-g-6">
                 <div class="ui-inputgroup">
                     <span class="ui-inputgroup-addon"><i class="fa fa-id-card" title="Sobrenome"><span class="required">*</span></i></span>
-                    <input type="text" pInputText placeholder="Informe o sobrenome" [(ngModel)]="usuario.sobrenome" name="sobrenome" required>
+                    <input type="text" pInputText placeholder="Informe o sobrenome" [(ngModel)]="usuario.sobrenome" 
+                        name="sobrenome" required maxlength="50">
                 </div>
             </div>
             <div class="ui-g-4">
                 <div class="ui-inputgroup">
                     <span class="ui-inputgroup-addon"><i class="fa fa-user" title="Login"><span class="required">*</span></i></span>
-                    <input type="text" pInputText placeholder="Informe o login" [(ngModel)]="usuario.login" name="login" required>
+                    <input type="text" pInputText placeholder="Informe o login" [(ngModel)]="usuario.login" name="login" 
+                        required maxlength="50">
                 </div>
             </div>
             <div class="ui-g-4">
                 <div class="ui-inputgroup">
                     <span class="ui-inputgroup-addon"><i class="fa fa-at" title="E-mail"><span class="required">*</span></i></span>
-                    <input type="email" pInputText placeholder="Informe o email" [(ngModel)]="usuario.email" name="email" required>
+                    <input type="email" pInputText placeholder="Informe o email" [(ngModel)]="usuario.email" name="email" 
+                        required maxlength="50">
                 </div>
             </div>
             <div class="ui-g-4">
                 <div class="ui-inputgroup">
                     <span class="ui-inputgroup-addon"><i class="fa fa-lock" title="Senha"><span class="required">*</span></i></span>
-                    <input type="password" pInputText placeholder="Informe a senha" [(ngModel)]="usuario.senha" name="senha" required>
+                    <input type="password" pInputText placeholder="Informe a senha" [(ngModel)]="usuario.senha" name="senha" 
+                        required maxlength="255">
                 </div>
             </div>
         </div>
