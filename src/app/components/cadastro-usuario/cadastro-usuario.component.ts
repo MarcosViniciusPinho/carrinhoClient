@@ -13,23 +13,26 @@ import { Usuario } from '../../domain/usuario';
 })
 export class CadastroUsuarioComponent implements OnInit {
 
-  display: boolean = false;
+  isHabilitarCadastro: boolean = false;
+
+  usuario: Usuario;
 
   constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
+    this.usuario = new Usuario();
   }
 
   show() {
-    this.display = true;
+    this.isHabilitarCadastro = true;
   }
 
   close() {
-    this.display = false;
+    this.isHabilitarCadastro = false;
   }
 
-  salvar(form: NgForm) {
-    this.usuarioService.create(this.createUsuario(form))
+  salvar() {
+    this.usuarioService.create(this.usuario)
       .then(usuario => {
         swal({
           title: 'Sucesso!',
@@ -40,16 +43,6 @@ export class CadastroUsuarioComponent implements OnInit {
           location.reload();
         });
       });
-  }
-
-  createUsuario(form: NgForm) {
-    let usuario: Usuario = new Usuario();
-    usuario.nome = form.value.nome;
-    usuario.sobrenome = form.value.sobrenome;
-    usuario.login = form.value.login;
-    usuario.senha = form.value.senha;
-    usuario.email = form.value.email;
-    return usuario;
   }
 
 }
