@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 
 import swal from 'sweetalert2';
 
+import { ToastyService } from 'ng2-toasty';
+
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../domain/usuario';
 
@@ -17,7 +19,8 @@ export class CadastroUsuarioComponent implements OnInit {
 
   usuario: Usuario;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService,
+              private toastyService: ToastyService) { }
 
   ngOnInit() {
     this.usuario = new Usuario();
@@ -41,7 +44,11 @@ export class CadastroUsuarioComponent implements OnInit {
           confirmButtonText: 'Fechar'
         }).then(() => {
           location.reload();
-        });
+        })
+      }).catch(response => {
+        response.forEach(exception => {
+          this.toastyService.error(exception.erro);
+        })
       });
   }
 

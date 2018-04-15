@@ -11,7 +11,10 @@ export class UsuarioService {
 
   create(usuario: Usuario): Promise<Usuario> {
     return this.http.post(this.usuarioUrl, usuario).toPromise().
-      then(response => response.json());
+      then(response => response.json())
+      .catch(response => { 
+        throw response.json()
+      });
   }
 
 }
