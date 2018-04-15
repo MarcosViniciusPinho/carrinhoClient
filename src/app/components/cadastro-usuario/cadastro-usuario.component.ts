@@ -34,16 +34,17 @@ export class CadastroUsuarioComponent implements OnInit {
     this.isHabilitarCadastro = false;
   }
 
-  salvar() {
+  salvar(form: NgForm) {
     this.usuarioService.create(this.usuario)
       .then(usuario => {
+        this.close();
         swal({
           title: 'Sucesso!',
           text: `Você já pode se logar no sistema, prezado usuário ${usuario.login}`,
           type: 'success',
           confirmButtonText: 'Fechar'
         }).then(() => {
-          location.reload();
+          form.resetForm();
         })
       }).catch(response => {
         response.forEach(exception => {

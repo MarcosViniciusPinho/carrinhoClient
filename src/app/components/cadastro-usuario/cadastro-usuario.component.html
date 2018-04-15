@@ -1,5 +1,5 @@
 <p-dialog header="Cadastrar Usuário" [(visible)]="isHabilitarCadastro" modal="modal" [responsive]="true" [width]="800" [minWidth]="300" [closable]="false">  
-    <form #form="ngForm" (ngSubmit)="salvar()" novalidate>
+    <form #form="ngForm" (ngSubmit)="salvar(form)" novalidate>
         <div class="ui-g ui-fluid">
             <div class="ui-g-12">
                 <span>Os campos marcados com <span class="required">*</span> são de preenchimento obrigatório</span>
