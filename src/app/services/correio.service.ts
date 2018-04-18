@@ -8,7 +8,7 @@ export class CorreioService {
 
   constructor(private http: Http) { }
 
-  buscarCep(cep: number): Promise<EnderecoWs> {
+  buscarCep(cep: String): Promise<EnderecoWs> {
     return this.http.get(`https://viacep.com.br/ws/${cep}/json/`).toPromise().
       then(response => {
         const enderecoWs = new EnderecoWs();
