@@ -11,7 +11,10 @@ export class EstadoService {
 
   list(): Promise<Estado[]> {
     return this.http.get(`${this.estadoUrl}`).toPromise().
-      then(response => response.json());
+      then(response => response.json())
+      .catch(response => { 
+        throw response.json()
+      });
   }
 
 }

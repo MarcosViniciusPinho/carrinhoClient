@@ -131,7 +131,14 @@ export class ComprarProdutosComponent implements OnInit {
 
   carregarMunicipios() {
     this.municipioSelecionado = '';
-    this.municipioService.listByEstado(this.estadoSelecionado).then(municipiosCarregados => this.municipios = municipiosCarregados);
+    this.municipioService.listByEstado(this.estadoSelecionado)
+    .then(municipiosCarregados => this.municipios = municipiosCarregados)
+    .catch(response => {
+      response.forEach(exception => {
+        this.municipios = [];
+        this.toastyService.error(exception.erro);
+      })
+    });
   }
 
 }

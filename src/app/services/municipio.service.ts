@@ -11,7 +11,10 @@ export class MunicipioService {
 
   listByEstado(estado: String): Promise<Municipio[]> {
     return this.http.get(`${this.municipioUrl}/${estado}`).toPromise().
-      then(response => response.json());
+      then(response => response.json())
+      .catch(response => { 
+        throw response.json()
+      });
   }
 
 }
