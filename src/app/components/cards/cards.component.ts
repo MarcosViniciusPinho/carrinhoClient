@@ -20,14 +20,21 @@ export class CardsComponent implements OnInit {
 
   ngOnInit() {
     this.produtoService.list().then(produtosCarregados =>
-      this.produtos = this.inserirValorParaAtributoQuantidadeDeProduto(produtosCarregados));
+      this.produtos = this.inserirValorParaAtributoQuantidadeDeProduto(produtosCarregados))
+      .catch(response => this.indisponibilidadeDoServiço(response));
   }
 
   pesquisar(campoPesquisado) {
     this.produtoService.list(campoPesquisado).then(produtosCarregados => {
         const produtos = this.inserirValorParaAtributoQuantidadeDeProduto(produtosCarregados);
         this.produtos = this.removerProdutoEscolhidoAoPesquisar(produtos);
-    });
+    }).catch(response => this.indisponibilidadeDoServiço(response));
+  }
+
+  indisponibilidadeDoServiço(response) {
+    if(response.type == "error") {
+      this.toastyService.error('Houve uma falha de comunicação com a API');
+    }
   }
 
   inserirValorParaAtributoQuantidadeDeProduto(produtosBuscados) {

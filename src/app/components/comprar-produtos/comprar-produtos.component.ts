@@ -104,7 +104,13 @@ export class ComprarProdutosComponent implements OnInit {
         this.popularCamposDeEnderecoPorCepInformado(form, endereco);
         this.exibirNotificacaoDeCepNaoEncontrado(endereco);
         this.carregarMunicipios();
-      });
+      }).catch(response => this.indisponibilidadeDoServiço(response));
+    }
+  }
+
+  indisponibilidadeDoServiço(response) {
+    if(response.type == "error") {
+      this.toastyService.error('Houve uma falha de comunicação com a API');
     }
   }
 
@@ -126,7 +132,8 @@ export class ComprarProdutosComponent implements OnInit {
   carregarEstados() {
     this.estadoSelecionado = '';
     this.municipioSelecionado = '';
-    this.estadoService.list().then(estadosCarregados => this.estados = estadosCarregados);
+    this.estadoService.list().then(estadosCarregados => this.estados = estadosCarregados)
+    .catch(response => this.indisponibilidadeDoServiço(response));
   }
 
   carregarMunicipios() {
@@ -134,10 +141,14 @@ export class ComprarProdutosComponent implements OnInit {
     this.municipioService.listByEstado(this.estadoSelecionado)
     .then(municipiosCarregados => this.municipios = municipiosCarregados)
     .catch(response => {
-      response.forEach(exception => {
-        this.municipios = [];
-        this.toastyService.error(exception.erro);
-      })
+      if(response.type == "error") {
+        this.toastyService.error('Houve uma falha de comunicação com a API');
+      } else {
+        response.forEach(exception => {
+          this.municipios = [];
+          this.toastyService.error(exception.erro);
+        })
+      }
     });
   }
 
