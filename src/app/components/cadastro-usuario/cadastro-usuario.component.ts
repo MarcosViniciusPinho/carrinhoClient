@@ -47,9 +47,13 @@ export class CadastroUsuarioComponent implements OnInit {
           form.resetForm();
         })
       }).catch(response => {
-        response.forEach(exception => {
-          this.toastyService.error(exception.erro);
-        })
+        if(response.type == "error") {
+          this.toastyService.error('Houve uma falha de comunicação com a API');
+        } else {
+          response.forEach(exception => {
+            this.toastyService.error(exception.erro);
+          })
+        }
       });
   }
 
