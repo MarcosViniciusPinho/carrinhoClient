@@ -84,6 +84,14 @@ export class ComprarProdutosComponent implements OnInit {
         }).then(() => {
             location.reload();
         });
+      }).catch(response => {
+        if(response.type == "error") {
+          this.toastyService.error('Houve uma falha de comunicação com a API');
+        } else {
+          response.forEach(exception => {
+            this.toastyService.error(exception.erro);
+          })
+        }
       });
   }
 
@@ -104,19 +112,18 @@ export class ComprarProdutosComponent implements OnInit {
         this.popularCamposDeEnderecoPorCepInformado(form, endereco);
         this.exibirNotificacaoDeCepNaoEncontrado(endereco);
         this.carregarMunicipios();
-      }).catch(response => this.indisponibilidadeDoServiço(response));
-    }
-  }
-
-  indisponibilidadeDoServiço(response) {
-    if(response.type == "error") {
-      this.toastyService.error('Houve uma falha de comunicação com a API');
+      }).catch(response => {
+        if(response.type == "error") {
+          this.toastyService.error('O cep informado não é válido');
+          form.value.cep = '';
+        }
+      });
     }
   }
 
   exibirNotificacaoDeCepNaoEncontrado(endereco: EnderecoWs) {
     if (endereco.error) {
-      this.toastyService.error(`O cep informado não foi encontrado`.toUpperCase());
+      this.toastyService.error('O cep informado não foi encontrado');
       this.estadoSelecionado = '';
     }
   }
@@ -133,7 +140,11 @@ export class ComprarProdutosComponent implements OnInit {
     this.estadoSelecionado = '';
     this.municipioSelecionado = '';
     this.estadoService.list().then(estadosCarregados => this.estados = estadosCarregados)
-    .catch(response => this.indisponibilidadeDoServiço(response));
+    .catch(response => {
+      if(response.type == "error") {
+        this.toastyService.error('Houve uma falha de comunicação com a API');
+      }
+    });
   }
 
   carregarMunicipios() {
