@@ -1,17 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
+import { Usuario } from '../../domain/usuario';
+
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  usuario: Usuario;
 
-  login(login: string, senha: string) {
-    console.log(`Usuario logado, com login ${login} e senha ${senha}`);
-    this.router.navigate(['/first']);
+  constructor(private router: Router, private auth: AuthService) { }
+
+  ngOnInit() {
+    this.usuario = new Usuario();
+  }
+
+  login(form: NgForm) {
+    /* console.log(`Usuario logado, com login ${this.usuario.login} e senha ${this.usuario.senha}`);
+    this.router.navigate(['/first']); */
+    this.auth.login(this.usuario);
   }
 }

@@ -10,6 +10,8 @@ import { CadastroUsuarioModule } from './../cadastro-usuario/cadastro-usuario.mo
 
 import { LoginComponent } from './login.component';
 
+import { AuthService } from '../../services/auth.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { LoginComponent } from './login.component';
     LoginRouterModule,
     CadastroUsuarioModule
   ],
+  providers: [AuthService],
   declarations: [LoginComponent]
 })
 export class LoginModule { }
