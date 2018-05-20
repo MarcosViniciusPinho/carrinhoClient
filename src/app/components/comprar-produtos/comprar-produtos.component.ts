@@ -21,6 +21,7 @@ import { CarrinhoService } from '../../services/carrinho.service';
 import { CorreioService } from '../../services/correio.service';
 import { EstadoService } from '../../services/estado.service';
 import { MunicipioService } from '../../services/municipio.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-comprar-produtos',
@@ -48,7 +49,8 @@ export class ComprarProdutosComponent implements OnInit {
               private correioService: CorreioService,
               private toastyService: ToastyService,
               private estadoService: EstadoService,
-              private municipioService: MunicipioService) { }
+              private municipioService: MunicipioService,
+              private auth: AuthService) { }
 
   ngOnInit() {
     this.usuario = new Usuario();
@@ -77,7 +79,7 @@ export class ComprarProdutosComponent implements OnInit {
       .then(carrinho => {
         swal({
           title: 'Sucesso!',
-          text: `Sua compra foi realizada com êxito, prezado ${carrinho.usuario.nome}.
+          text: `Sua compra foi realizada com êxito, prezado(a) ${carrinho.usuario.nome}.
           Enviamos para você a relação de produtos adquiridos via e-mail.`,
           type: 'success',
           confirmButtonText: 'Voltar a página inicial'
@@ -98,7 +100,7 @@ export class ComprarProdutosComponent implements OnInit {
   createCarrinho(form: NgForm) {
     const endereco = new Endereco(form.value.cep, form.value.logradouro, form.value.complemento,
       form.value.bairro, form.value.municipio, form.value.estado);
-    this.usuario.login = 'MarcosPinho';
+    this.usuario.login = this.auth.jwtPayload.user_name;
     const produtosCarrinhos: ProdutoCarrinho[] = [];
     this.produtosEscolhidos.forEach(produto => {
       produtosCarrinhos.push(new ProdutoCarrinho(produto));
