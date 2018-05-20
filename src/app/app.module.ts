@@ -7,7 +7,6 @@ import { HttpModule } from '@angular/http';
 import localePt from '@angular/common/locales/pt';
 
 import { ToastyModule } from 'ng2-toasty';
-import { JwtHelper } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
 import { StepModule } from './components/step/step.module';
@@ -48,7 +47,7 @@ const routes: Routes = [
     NavbarModule,
     LoginModule
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}, { provide: LOCALE_ID, useValue: 'pt' }, JwtHelper],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'}, { provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { Http, RequestOptions } from '@angular/http';
 
+import { JwtHelper } from 'angular2-jwt';
+
 import { ButtonModule } from 'primeng/components/button/button';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 
@@ -29,7 +31,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     LoginRouterModule,
     CadastroUsuarioModule
   ],
-  providers: [AuthService, 
+  providers: [AuthService, JwtHelper,
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
