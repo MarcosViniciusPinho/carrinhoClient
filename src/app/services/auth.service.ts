@@ -3,13 +3,17 @@ import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import { Usuario } from '../domain/usuario';
+import { JwtHelper } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
 
   oauthTokenUrl = 'http://localhost:8081/carrinhoAPI/oauth/token';
+  jwtPayload: any;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private jwtHelper: JwtHelper) { 
+    this.getTokenInLocalStorage();
+  }
 
   login(usuario: Usuario): Promise<void> {
     const headers = new Headers();
@@ -21,11 +25,23 @@ export class AuthService {
     return this.http.post(this.oauthTokenUrl, body, { headers })
       .toPromise()
       .then(response => {
-        console.log(response);
+        this.setTokenInLocalStorage(response.json().access_token);
       })
       .catch(response => {
         console.log(response);
       });
   }
 
+  private setTokenInLocalStorage(token: string) {
+    this.jwtPayload = this.jwtHelper.decodeToken(token);
+    localStorage.setItem('token', token);
+  }
+
+  private getTokenInLocalStorage() {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      this.setTokenInLocalStorage(token);
+    }
+}
 }
