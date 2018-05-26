@@ -15,9 +15,16 @@ import { CadastroUsuarioModule } from './../cadastro-usuario/cadastro-usuario.mo
 import { LoginComponent } from './login.component';
 
 import { AuthService } from '../../services/auth.service';
+import { RefreshTokenHttp } from '../../seguranca/refresh-token-http';
 
-export function authHttpServiceFactory(http: Http, options: RequestOptions) {
-  return new AuthHttp(new AuthConfig(), http, options);
+export function authHttpServiceFactory(auth: AuthService, http: Http, options: RequestOptions) {
+  const config = new AuthConfig({
+    globalHeaders: [
+      { 'Content-Type': 'application/json' }
+    ]
+  });
+  
+  return new RefreshTokenHttp(auth, config, http, options);
 }
 
 @NgModule({
@@ -35,7 +42,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
-      deps: [Http, RequestOptions]
+      deps: [AuthService, Http, RequestOptions]
     }
   ],
   declarations: [LoginComponent]
