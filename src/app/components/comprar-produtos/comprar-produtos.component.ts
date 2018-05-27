@@ -22,6 +22,7 @@ import { CorreioService } from '../../services/correio.service';
 import { EstadoService } from '../../services/estado.service';
 import { MunicipioService } from '../../services/municipio.service';
 import { AuthService } from '../../services/auth.service';
+import { ErrorHandlerService } from '../../services/error-handler.service';
 
 @Component({
   selector: 'app-comprar-produtos',
@@ -50,7 +51,8 @@ export class ComprarProdutosComponent implements OnInit {
               private toastyService: ToastyService,
               private estadoService: EstadoService,
               private municipioService: MunicipioService,
-              private auth: AuthService) { }
+              private auth: AuthService,
+              private errorHandler: ErrorHandlerService) { }
 
   ngOnInit() {
     this.usuario = new Usuario();
@@ -86,7 +88,8 @@ export class ComprarProdutosComponent implements OnInit {
         }).then(() => {
             location.reload();
         });
-      }).catch(response => {
+      }).catch(response => this.errorHandler.handle(response));
+      /* .catch(response => {
         if(response.type == "error") {
           this.toastyService.error('Houve uma falha de comunicação com a API');
         } else {
@@ -94,7 +97,7 @@ export class ComprarProdutosComponent implements OnInit {
             this.toastyService.error(exception.erro);
           })
         }
-      });
+      }); */
   }
 
   createCarrinho(form: NgForm) {
@@ -112,21 +115,18 @@ export class ComprarProdutosComponent implements OnInit {
     if (form.value.cep) {
       this.correioService.buscarCep(form.value.cep).then(endereco => {
         this.popularCamposDeEnderecoPorCepInformado(form, endereco);
-        this.exibirNotificacaoDeCepNaoEncontrado(endereco);
+        this.exibirNotificacaoDeCepNaoEncontrado(endereco, form);
         this.carregarMunicipios();
-      }).catch(response => {
-        if(response.type == "error") {
-          this.toastyService.error('O cep informado não é válido');
-          form.value.cep = '';
-        }
       });
     }
   }
 
-  exibirNotificacaoDeCepNaoEncontrado(endereco: EnderecoWs) {
+  exibirNotificacaoDeCepNaoEncontrado(endereco: EnderecoWs, form: NgForm) {
     if (endereco.error) {
       this.toastyService.error('O cep informado não foi encontrado');
       this.estadoSelecionado = '';
+      this.municipioSelecionado = '';
+      form.value.cep = ''
     }
   }
 
@@ -134,35 +134,30 @@ export class ComprarProdutosComponent implements OnInit {
     form.value.logradouro = endereco.logradouro;
     form.value.complemento = endereco.complemento;
     form.value.bairro = endereco.bairro;
-    /* this.municipioSelecionado = endereco.localidade; */
     this.estadoSelecionado = endereco.uf;
+    this.municipioSelecionado = endereco.localidade;
   }
 
   carregarEstados() {
     this.estadoSelecionado = '';
     this.municipioSelecionado = '';
     this.estadoService.list().then(estadosCarregados => this.estados = estadosCarregados)
-    .catch(response => {
-      if(response.type == "error") {
-        this.toastyService.error('Houve uma falha de comunicação com a API');
-      }
-    });
+    .catch(response => this.errorHandler.handle(response));
   }
 
   carregarMunicipios() {
-    this.municipioSelecionado = '';
-    this.municipioService.listByEstado(this.estadoSelecionado)
-    .then(municipiosCarregados => this.municipios = municipiosCarregados)
-    .catch(response => {
-      if(response.type == "error") {
-        this.toastyService.error('Houve uma falha de comunicação com a API');
-      } else {
-        response.forEach(exception => {
-          this.municipios = [];
-          this.toastyService.error(exception.erro);
-        })
-      }
-    });
+    if(this.estadoSelecionado) {
+      this.municipioService.listByEstado(this.estadoSelecionado)
+      .then(municipiosCarregados => this.municipios = municipiosCarregados)
+      .catch(response => {
+        this.errorHandler.handle(response);
+        this.estadoSelecionado = '';
+        this.municipioSelecionado = '';
+      });
+    } else {
+      this.municipios = [];
+      this.municipioSelecionado = '';
+    }
   }
 
 }

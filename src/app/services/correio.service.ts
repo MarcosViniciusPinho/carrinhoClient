@@ -23,8 +23,6 @@ export class CorreioService {
           enderecoWs.uf = endereco.uf;
         }
         return enderecoWs;
-      }).catch(response => { 
-        throw response.json()
       });
   }
 
