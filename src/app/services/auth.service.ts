@@ -22,7 +22,8 @@ export class AuthService {
 
     const body = `username=${usuario.login}&password=${usuario.senha}&grant_type=password`;
 
-    return this.http.post(this.oauthTokenUrl, body, { headers })
+    return this.http.post(this.oauthTokenUrl, body, 
+        { headers, withCredentials: true })
       .toPromise()
       .then(response => {
         this.setTokenInLocalStorage(response.json().access_token);
