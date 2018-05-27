@@ -89,15 +89,6 @@ export class ComprarProdutosComponent implements OnInit {
             location.reload();
         });
       }).catch(response => this.errorHandler.handle(response));
-      /* .catch(response => {
-        if(response.type == "error") {
-          this.toastyService.error('Houve uma falha de comunicação com a API');
-        } else {
-          response.forEach(exception => {
-            this.toastyService.error(exception.erro);
-          })
-        }
-      }); */
   }
 
   createCarrinho(form: NgForm) {

@@ -26,17 +26,20 @@ export class ErrorHandlerService {
     } else if (errorResponse instanceof Response
         && errorResponse.status >= 400 && errorResponse.status <= 499) {
       let errors;
-      msg = 'Ocorreu um erro ao processar a sua solicitação';
-
+      
       if (errorResponse.status === 403) {
         msg = 'Você não tem permissão para executar esta ação';
-      }
+      } else if(errorResponse.status === 400) {
 
-      try {
         errors = errorResponse.json();
 
-        msg = errors[0].mensagemUsuario;
-      } catch (e) { }
+        errors.forEach(exception => {
+          this.toasty.error(exception.erro);
+        })
+        
+      } else {
+        msg = 'Ocorreu um erro ao processar a sua solicitação';
+      }
 
       console.error('Ocorreu um erro', errorResponse);
 
