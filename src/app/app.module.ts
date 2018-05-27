@@ -18,6 +18,7 @@ import { CardsComponent } from './components/cards/cards.component';
 import { CarrinhoProdutosComponent } from './components/carrinho-produtos/carrinho-produtos.component';
 import { ComprarProdutosComponent } from './components/comprar-produtos/comprar-produtos.component';
 import { LoginModule } from './components/login/login.module';
+import { ErrorHandlerService } from './services/error-handler.service';
 
 registerLocaleData(localePt);
 
@@ -47,7 +48,7 @@ const routes: Routes = [
     NavbarModule,
     LoginModule
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}, { provide: LOCALE_ID, useValue: 'pt' }],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'}, { provide: LOCALE_ID, useValue: 'pt' }, ErrorHandlerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

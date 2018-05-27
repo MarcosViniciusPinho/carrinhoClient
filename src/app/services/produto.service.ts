@@ -12,10 +12,7 @@ export class ProdutoService {
 
   list(campoPesquisa = ''): Promise<Produto[]> {
     return this.http.get(`${this.produtoUrl}?nome=${campoPesquisa}`).toPromise().
-      then(response => response.json())
-      .catch(response => { 
-        throw response.json()
-      });
+      then(response => response.json());
   }
 
 }

@@ -4,6 +4,7 @@ import { ToastyService } from 'ng2-toasty';
 import { ProdutoEscolhidoArray } from '../util/produto-escolhido-array';
 import { Produto } from '../../domain/produto';
 import { ProdutoService } from '../../services/produto.service';
+import { ErrorHandlerService } from '../../services/error-handler.service';
 import { Categoria } from '../../domain/categoria';
 
 @Component({
@@ -16,25 +17,20 @@ export class CardsComponent implements OnInit {
   produtos: Produto[] = [];
 
   constructor(private toastyService: ToastyService,
-              private produtoService: ProdutoService) {}
+              private produtoService: ProdutoService,
+              private errorHandler: ErrorHandlerService) {}
 
   ngOnInit() {
     this.produtoService.list().then(produtosCarregados =>
       this.produtos = this.inserirValorParaAtributoQuantidadeDeProduto(produtosCarregados))
-      .catch(response => this.indisponibilidadeDoServiço(response));
+      .catch(response => this.errorHandler.handle(response));
   }
 
   pesquisar(campoPesquisado) {
     this.produtoService.list(campoPesquisado).then(produtosCarregados => {
         const produtos = this.inserirValorParaAtributoQuantidadeDeProduto(produtosCarregados);
         this.produtos = this.removerProdutoEscolhidoAoPesquisar(produtos);
-    }).catch(response => this.indisponibilidadeDoServiço(response));
-  }
-
-  indisponibilidadeDoServiço(response) {
-    if(response.type == "error") {
-      this.toastyService.error('Houve uma falha de comunicação com a API');
-    }
+    }).catch(response => this.errorHandler.handle(response));
   }
 
   inserirValorParaAtributoQuantidadeDeProduto(produtosBuscados) {

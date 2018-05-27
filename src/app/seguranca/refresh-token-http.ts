@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from '../services/auth.service';
 
+export class NotAuthenticatedError {}
+
 @Injectable()
 export class RefreshTokenHttp extends AuthHttp {
 
@@ -51,6 +53,10 @@ export class RefreshTokenHttp extends AuthHttp {
 
       const chamadaNovoAccessToken = this.auth.obterNovoAccessToken()
         .then(() => {
+          if (this.auth.isAccessTokenInvalido()) {
+            throw new NotAuthenticatedError();
+          }
+
           return fn().toPromise();
         });
 
