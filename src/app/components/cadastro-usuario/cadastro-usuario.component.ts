@@ -33,6 +33,7 @@ export class CadastroUsuarioComponent implements OnInit {
 
   show() {
     this.isHabilitarCadastro = true;
+    this.criarAcessToken();
   }
 
   close() {
@@ -40,11 +41,6 @@ export class CadastroUsuarioComponent implements OnInit {
   }
 
   salvar(form: NgForm) {
-    const usuario = new Usuario;
-    usuario.login = 'MarcosPinho';
-    usuario.senha = '123456';
-    this.auth.login(usuario);
-    
     this.usuarioService.create(this.usuario)
       .then(usuario => {
         this.close();
@@ -57,6 +53,13 @@ export class CadastroUsuarioComponent implements OnInit {
           form.resetForm();
         })
       }).catch(response => this.errorHandler.handle(response));
+  }
+
+  criarAcessToken() {
+    const usuario = new Usuario();
+    usuario.login = 'MarcosPinho';
+    usuario.senha = '123456';
+    this.auth.login(usuario);
   }
 
 }
