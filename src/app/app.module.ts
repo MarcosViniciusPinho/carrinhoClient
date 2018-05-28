@@ -20,13 +20,15 @@ import { ComprarProdutosComponent } from './components/comprar-produtos/comprar-
 import { LoginModule } from './components/login/login.module';
 import { ErrorHandlerService } from './services/error-handler.service';
 
+import { AuthGuard } from './seguranca/auth.guard';
+
 registerLocaleData(localePt);
 
 const routes: Routes = [
   { path: '', redirectTo: '/first', pathMatch: 'full' },
-  { path: 'first', component: CardsComponent },
-  { path: 'secound', component: CarrinhoProdutosComponent},
-  { path: 'three', component: ComprarProdutosComponent}
+  { path: 'first', component: CardsComponent, canActivate: [AuthGuard], },
+  { path: 'secound', component: CarrinhoProdutosComponent, canActivate: [AuthGuard],},
+  { path: 'three', component: ComprarProdutosComponent, canActivate: [AuthGuard],}
 ];
 
 @NgModule({
@@ -48,7 +50,7 @@ const routes: Routes = [
     NavbarModule,
     LoginModule
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}, { provide: LOCALE_ID, useValue: 'pt' }, ErrorHandlerService],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'}, { provide: LOCALE_ID, useValue: 'pt' }, ErrorHandlerService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
