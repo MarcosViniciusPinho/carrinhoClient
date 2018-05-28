@@ -6,6 +6,9 @@ import swal from 'sweetalert2';
 import { ToastyService } from 'ng2-toasty';
 
 import { UsuarioService } from '../../services/usuario.service';
+import { ErrorHandlerService } from '../../services/error-handler.service';
+import { AuthService } from '../../services/auth.service';
+
 import { Usuario } from '../../domain/usuario';
 
 @Component({
@@ -20,7 +23,9 @@ export class CadastroUsuarioComponent implements OnInit {
   usuario: Usuario;
 
   constructor(private usuarioService: UsuarioService,
-              private toastyService: ToastyService) { }
+              private toastyService: ToastyService,
+              private errorHandler: ErrorHandlerService,
+              private auth: AuthService) { }
 
   ngOnInit() {
     this.usuario = new Usuario();
@@ -35,6 +40,11 @@ export class CadastroUsuarioComponent implements OnInit {
   }
 
   salvar(form: NgForm) {
+    const usuario = new Usuario;
+    usuario.login = 'MarcosPinho';
+    usuario.senha = '123456';
+    this.auth.login(usuario);
+    
     this.usuarioService.create(this.usuario)
       .then(usuario => {
         this.close();
@@ -46,15 +56,7 @@ export class CadastroUsuarioComponent implements OnInit {
         }).then(() => {
           form.resetForm();
         })
-      }).catch(response => {
-        if(response.type == "error") {
-          this.toastyService.error('Houve uma falha de comunicação com a API');
-        } else {
-          response.forEach(exception => {
-            this.toastyService.error(exception.erro);
-          })
-        }
-      });
+      }).catch(response => this.errorHandler.handle(response));
   }
 
 }
