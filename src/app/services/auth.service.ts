@@ -80,4 +80,10 @@ export class AuthService {
       this.setTokenInLocalStorage(token);
     }
   }
+
+  clearAccessToken() {
+    localStorage.removeItem('token');
+    this.jwtPayload = null;
+  }
+
 }

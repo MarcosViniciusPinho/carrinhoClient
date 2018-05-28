@@ -1,6 +1,6 @@
 <div class="navbar-container">
     <div class="label-usuario-logado">
         <strong><i class="fa fa-user"></i> Olá, {{auth.jwtPayload?.user_name}}</strong>
-        <a class="space" href="#"><i class="fa fa-power-off" title="Logout"></i></a>
+        <a class="space" href="#" (click)="logout()"><i class="fa fa-power-off" title="Logout"></i></a>
     </div>
 </div>
