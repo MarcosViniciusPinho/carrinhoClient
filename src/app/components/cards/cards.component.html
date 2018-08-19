@@ -5,7 +5,7 @@
     <button pButton type="button" label="Pesquisar" (click)="pesquisar(campoPesquisado.value)"></button>
   </span>
 
-<p-dataGrid [value]="produtos" [paginator]="true" [rows]="12" [totalRecords]="totalRecords" emptyMessage="Produto(s) indisponível no momento"
+<p-dataGrid [value]="produtos" [paginator]="true" [rows]="12" emptyMessage="Produto(s) indisponível no momento"
     class="alinhar-text">
   <ng-template let-produto pTemplate="produto">
         <div style="padding:3px" class="ui-g-12 ui-md-3">

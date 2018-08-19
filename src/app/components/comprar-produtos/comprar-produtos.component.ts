@@ -117,7 +117,7 @@ export class ComprarProdutosComponent implements OnInit {
       this.toastyService.error('O cep informado não foi encontrado');
       this.estadoSelecionado = '';
       this.municipioSelecionado = '';
-      form.value.cep = ''
+      form.value.cep = '';
     }
   }
 
@@ -137,7 +137,7 @@ export class ComprarProdutosComponent implements OnInit {
   }
 
   carregarMunicipios() {
-    if(this.estadoSelecionado) {
+    if (this.estadoSelecionado) {
       this.municipioService.listByEstado(this.estadoSelecionado)
       .then(municipiosCarregados => this.municipios = municipiosCarregados)
       .catch(response => {

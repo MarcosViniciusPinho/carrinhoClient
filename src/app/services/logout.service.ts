@@ -2,15 +2,19 @@ import { AuthService } from './auth.service';
 import { AuthHttp } from 'angular2-jwt';
 import { Injectable } from '@angular/core';
 
+import { environment } from './../../environments/environment.prod';
+
 @Injectable()
 export class LogoutService {
 
-  tokensRenokeUrl = 'http://localhost:8081/carrinhoAPI/tokens/revoke';
+  tokensRenokeUrl: string;
 
   constructor(
     private http: AuthHttp,
     private auth: AuthService
-  ) { }
+  ) {
+    this.tokensRenokeUrl = `${environment.urlCarrinhoApi}/carrinhoAPI/tokens/revoke`;
+   }
 
   logout() {
     return this.http.delete(this.tokensRenokeUrl, { withCredentials: true })

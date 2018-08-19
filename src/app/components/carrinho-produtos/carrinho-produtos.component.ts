@@ -56,6 +56,7 @@ export class CarrinhoProdutosComponent implements OnInit {
 
   atualizarGridDaFaseTres(produto: Produto) {
     ProdutoEscolhidoArray.clear();
+    // tslint:disable-next-line:no-shadowed-variable
     this.produtosEscolhidos.forEach(produto => ProdutoEscolhidoArray.add(produto));
   }
 }

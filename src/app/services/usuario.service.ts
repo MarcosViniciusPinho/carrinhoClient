@@ -3,12 +3,16 @@ import { AuthHttp } from 'angular2-jwt';
 
 import { Usuario } from '../domain/usuario';
 
+import { environment } from './../../environments/environment.prod';
+
 @Injectable()
 export class UsuarioService {
 
-  usuarioUrl = 'http://localhost:8081/carrinhoAPI/usuarios';
+  usuarioUrl: string;
 
-  constructor(private http: AuthHttp) { }
+  constructor(private http: AuthHttp) {
+    this.usuarioUrl = `${environment.urlCarrinhoApi}/carrinhoAPI/usuarios`;
+   }
 
   create(usuario: Usuario): Promise<Usuario> {
     return this.http.post(this.usuarioUrl, usuario).toPromise().

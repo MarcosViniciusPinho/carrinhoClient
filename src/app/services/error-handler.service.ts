@@ -26,17 +26,17 @@ export class ErrorHandlerService {
     } else if (errorResponse instanceof Response
         && errorResponse.status >= 400 && errorResponse.status <= 499) {
       let errors;
-      
+
       if (errorResponse.status === 403) {
         msg = 'Você não tem permissão para executar esta ação';
-      } else if(errorResponse.status === 400) {
+      } else if (errorResponse.status === 400) {
 
         errors = errorResponse.json();
 
         errors.forEach(exception => {
           this.toasty.error(exception.erro);
-        })
-        
+        });
+
       } else {
         msg = 'Ocorreu um erro ao processar a sua solicitação';
       }
